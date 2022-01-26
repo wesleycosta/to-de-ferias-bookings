@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-items", "{B783300E-DE52-4FE7-9D85-A006E9AAE0E9}"
+	ProjectSection(SolutionItems) = preProject
+		..\.editorconfig = ..\.editorconfig
+		..\.gitattributes = ..\.gitattributes
+		..\.gitignore = ..\.gitignore
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{43C98045-5A9A-464D-9269-B4EA0341AFDF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7390F03E-4994-468A-ACFC-4770E1F127DC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDeFerias.Bookings.Api", "ToDeFerias.Bookings.Api\ToDeFerias.Bookings.Api.csproj", "{99C0E079-4022-4801-B506-B5B1F86DA4CE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDeFerias.Bookings.Domain", "ToDeFerias.Bookings.Domain\ToDeFerias.Bookings.Domain.csproj", "{1CED3B85-F2C1-4897-956B-E35B6AB24A44}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDeFerias.Bookings.Infrastructure", "ToDeFerias.Bookings.Infrastructure\ToDeFerias.Bookings.Infrastructure.csproj", "{0D90AB65-F7E5-4903-8879-D3829EA0FCE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unit-tests", "unit-tests", "{0E96461D-AF91-4F22-9C32-44DC70C7F2EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "devops", "devops", "{A8703BA9-169B-4CAA-AE2C-2BCBC27D4955}"
+	ProjectSection(SolutionItems) = preProject
+		..\devops\azure-pipelines.yml = ..\devops\azure-pipelines.yml
+		..\devops\docker-compose.yml = ..\devops\docker-compose.yml
+		..\devops\Dockerfile = ..\devops\Dockerfile
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDeFerias.Bookings.Core", "ToDeFerias.Bookings.Core\ToDeFerias.Bookings.Core.csproj", "{D9E76B41-38DE-46FA-A76E-4E936BF0ED1D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDeFerias.Bookings.Domain.Tests", "..\tests\unit-tests\ToDeFerias.Booking.Domain.Tests\ToDeFerias.Bookings.Domain.Tests.csproj", "{F2F15F78-1D08-4CD4-B64A-76BE91CC2F43}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{BE1E962D-4DF0-420B-9A51-56E12524D866}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", "{DC0D2D27-2845-419B-9528-4BEFCCA6D24E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infrastructure", "3 - Infrastructure", "{BF1F8644-5799-4CBA-8551-C3B837345CEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99C0E079-4022-4801-B506-B5B1F86DA4CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99C0E079-4022-4801-B506-B5B1F86DA4CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99C0E079-4022-4801-B506-B5B1F86DA4CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99C0E079-4022-4801-B506-B5B1F86DA4CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CED3B85-F2C1-4897-956B-E35B6AB24A44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CED3B85-F2C1-4897-956B-E35B6AB24A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CED3B85-F2C1-4897-956B-E35B6AB24A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CED3B85-F2C1-4897-956B-E35B6AB24A44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D90AB65-F7E5-4903-8879-D3829EA0FCE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D90AB65-F7E5-4903-8879-D3829EA0FCE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D90AB65-F7E5-4903-8879-D3829EA0FCE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D90AB65-F7E5-4903-8879-D3829EA0FCE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9E76B41-38DE-46FA-A76E-4E936BF0ED1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9E76B41-38DE-46FA-A76E-4E936BF0ED1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9E76B41-38DE-46FA-A76E-4E936BF0ED1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9E76B41-38DE-46FA-A76E-4E936BF0ED1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2F15F78-1D08-4CD4-B64A-76BE91CC2F43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2F15F78-1D08-4CD4-B64A-76BE91CC2F43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2F15F78-1D08-4CD4-B64A-76BE91CC2F43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2F15F78-1D08-4CD4-B64A-76BE91CC2F43}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{99C0E079-4022-4801-B506-B5B1F86DA4CE} = {BE1E962D-4DF0-420B-9A51-56E12524D866}
+		{1CED3B85-F2C1-4897-956B-E35B6AB24A44} = {DC0D2D27-2845-419B-9528-4BEFCCA6D24E}
+		{0D90AB65-F7E5-4903-8879-D3829EA0FCE1} = {BF1F8644-5799-4CBA-8551-C3B837345CEC}
+		{0E96461D-AF91-4F22-9C32-44DC70C7F2EE} = {7390F03E-4994-468A-ACFC-4770E1F127DC}
+		{A8703BA9-169B-4CAA-AE2C-2BCBC27D4955} = {B783300E-DE52-4FE7-9D85-A006E9AAE0E9}
+		{D9E76B41-38DE-46FA-A76E-4E936BF0ED1D} = {DC0D2D27-2845-419B-9528-4BEFCCA6D24E}
+		{F2F15F78-1D08-4CD4-B64A-76BE91CC2F43} = {0E96461D-AF91-4F22-9C32-44DC70C7F2EE}
+		{BE1E962D-4DF0-420B-9A51-56E12524D866} = {43C98045-5A9A-464D-9269-B4EA0341AFDF}
+		{DC0D2D27-2845-419B-9528-4BEFCCA6D24E} = {43C98045-5A9A-464D-9269-B4EA0341AFDF}
+		{BF1F8644-5799-4CBA-8551-C3B837345CEC} = {43C98045-5A9A-464D-9269-B4EA0341AFDF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {15163729-D6F1-4904-9EF2-3BA20C38869F}
+	EndGlobalSection
+EndGlobal
