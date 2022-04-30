@@ -13,7 +13,7 @@ public sealed class CpfTests
     [InlineData("733054.944-41")]
     [InlineData("016790664-04")]
     [InlineData("339.76734454")]
-    public void IsValid_Should_ReturnTrue_Given_ValidCpfNumber(string cpf)
+    public void IsValid_Should_ReturnTrue_When_ValidCpfNumber(string cpf)
     {
         // arrange
         var result = Cpf.IsValid(cpf);
@@ -31,7 +31,7 @@ public sealed class CpfTests
     [InlineData("44492437810")]
     [InlineData("877941257871")]
     [InlineData("32130312319")]
-    public void IsValid_Should_ReturnFalse_Given_InvalidCpfNumber(string cpf)
+    public void IsValid_Should_ReturnFalse_When_InvalidCpfNumber(string cpf)
     {
         // arrange
         var result = Cpf.IsValid(cpf);
@@ -47,7 +47,7 @@ public sealed class CpfTests
     [InlineData("44492437810")]
     [InlineData("877941257871")]
     [InlineData("32130312319")]
-    public void NewCpf_Should_ReturnException_Given_InvalidCpfNumber(string cpf)
+    public void NewCpf_Should_ReturnException_When_InvalidCpfNumber(string cpf)
     {
         // act
         var exception = Record.Exception(() => new Cpf(cpf));
@@ -63,7 +63,7 @@ public sealed class CpfTests
     [InlineData("647.338.988-19", "647.338.988-19")]
     [InlineData("79284661471", "792.846.614-71")]
     [InlineData("63785815417", "637.858.154-17")]
-    public void ToString_Should_ReturnCpfFormated_Given_CpfNumber(string cpfNumber, string expected)
+    public void ToString_Should_ReturnCpfFormated_When_CpfNumber(string cpfNumber, string expected)
     {
         // act
         var cpfFormated = new Cpf(cpfNumber).ToString();
@@ -78,7 +78,7 @@ public sealed class CpfTests
     [InlineData("06802626012", "068.026.260-12")]
     [InlineData("733054.944-41", "733054.944-41")]
     [InlineData("016790664-04", "016790664-04")]
-    public void Equals_Should_ReturnTrue_Given_TwoEqualCpfNumbers(string cpf, string expected)
+    public void Equals_Should_ReturnTrue_When_TwoEqualCpfNumbers(string cpf, string expected)
     {
         // arrange
         var cpfTest = new Cpf(cpf);
