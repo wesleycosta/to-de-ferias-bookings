@@ -1,13 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ToDeFerias.Bookings.Core.Data;
 using ToDeFerias.Bookings.Domain.Entities.BookingAggregate;
 using ToDeFerias.Bookings.Domain.Repositories;
 using ToDeFerias.Bookings.Infrastructure.Context;
 
 namespace ToDeFerias.Bookings.Infrastructure.Repositories;
 
-public sealed class BookingRepository : RepositoryBase<Booking>, IBookingRepository
+internal sealed class BookingRepository : RepositoryBase<Booking>, IBookingRepository
 {
-    public BookingRepository(BookingContext context) : base(context)
+    public BookingRepository(BookingContext context,
+                             IUnitOfWork unitOfWork) : base(context, unitOfWork)
     {
     }
 

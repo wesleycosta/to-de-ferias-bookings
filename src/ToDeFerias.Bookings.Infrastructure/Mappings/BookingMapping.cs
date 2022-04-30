@@ -45,6 +45,12 @@ public sealed class BookingMapping : IEntityTypeConfiguration<Booking>
                .WithMany(c => c.Bookings)
                .HasForeignKey(c => c.RoomId);
 
+        builder.Property(p => p.Created)
+               .HasDefaultValueSql("GETDATE()");
+
+        builder.Property(p => p.LastUpdated)
+               .HasDefaultValueSql("GETDATE()");
+
         builder.ToTable("Bookings");
     }
 }

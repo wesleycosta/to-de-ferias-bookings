@@ -19,7 +19,7 @@ public sealed class BookingsController : MainController
 
     public BookingsController(IMapper mapper,
                               INotifier notifier,
-                              IMediatorHandler mediatorHandler) : base(notifier)
+                              IMediatorHandler mediatorHandler) : base(mapper, notifier)
     {
         _mapper = mapper;
         _mediator = mediatorHandler;

@@ -16,8 +16,14 @@ public sealed class RoomMapping : IEntityTypeConfiguration<Room>
 
         builder.HasOne(p => p.Type)
                .WithMany(p => p.Rooms)
-               .HasForeignKey(p => p.RoomTypeId);    
-        
+               .HasForeignKey(p => p.RoomTypeId);
+
+        builder.Property(p => p.Created)
+               .HasDefaultValueSql("GETDATE()");
+
+        builder.Property(p => p.LastUpdated)
+               .HasDefaultValueSql("GETDATE()");
+
         builder.ToTable("Rooms");
     }
 }

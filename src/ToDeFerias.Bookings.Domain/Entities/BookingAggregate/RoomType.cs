@@ -4,6 +4,14 @@ namespace ToDeFerias.Bookings.Domain.Entities.BookingAggregate;
 
 public sealed class RoomType : Entity
 {
-    public string? Name { get; set; }
-    public List<Room> Rooms { get; set; }
+    public string? Name { get; private set; }
+    public List<Room> Rooms { get; }
+
+    protected RoomType() { }
+
+    public RoomType(Guid id, string? name)
+    {
+        Id = id;
+        Name = name;
+    }
 }

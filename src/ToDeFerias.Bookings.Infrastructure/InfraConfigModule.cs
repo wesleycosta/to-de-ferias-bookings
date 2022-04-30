@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ToDeFerias.Bookings.Core.Data;
 using ToDeFerias.Bookings.Core.Mediator;
 using ToDeFerias.Bookings.Domain.Repositories;
 using ToDeFerias.Bookings.Infrastructure.Context;
@@ -30,7 +31,8 @@ public static class InfraConfigModule
                 .AddScoped<BookingContext>();
 
     private static IServiceCollection AddRepositories(this IServiceCollection services) =>
-        services.AddScoped<IBookingRepository, BookingRepository>()
+        services.AddScoped<IUnitOfWork, UnitOfWork>()
+                .AddScoped<IBookingRepository, BookingRepository>()
                 .AddScoped<IHouseGuestRepository, HouseGuestRepository>();
 
     public static IApplicationBuilder ApplyMigrate(this IApplicationBuilder app)

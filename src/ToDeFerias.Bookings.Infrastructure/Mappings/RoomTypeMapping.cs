@@ -14,6 +14,12 @@ public sealed class RoomTypeMapping : IEntityTypeConfiguration<RoomType>
                .IsRequired()
                .HasColumnType("VARCHAR(255)");
 
+        builder.Property(p => p.Created)
+               .HasDefaultValueSql("GETDATE()");
+
+        builder.Property(p => p.LastUpdated)
+               .HasDefaultValueSql("GETDATE()");
+
         builder.ToTable("RoomTypes");
     }
 }

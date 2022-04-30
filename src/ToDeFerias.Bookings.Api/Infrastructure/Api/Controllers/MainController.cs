@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using AutoMapper;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using ToDeFerias.Bookings.Api.DTOs;
@@ -10,10 +11,15 @@ namespace ToDeFerias.Bookings.Api.Infrastructure.Api.Controllers;
 [ApiKey]
 public abstract class MainController : ControllerBase
 {
+    private readonly IMapper _mapper;
     public readonly INotifier Notifier;
 
-    protected MainController(INotifier notifier) =>
+    protected MainController(IMapper mapper,
+                             INotifier notifier)
+    {
+        _mapper = mapper;
         Notifier = notifier;
+    }
 
     protected bool IsValid() =>
         !Notifier.HasNotification();
@@ -56,7 +62,7 @@ public abstract class MainController : ControllerBase
         if (result == null)
             return NoContent();
 
-        return HttpStatusCodeRespose<T>(result, statusCode, url);
+        return HttpStatusCodeRespose<T>(_mapper.Map<T>(result), statusCode, url);
     }
 
     private IActionResult BadRequestResponse() =>

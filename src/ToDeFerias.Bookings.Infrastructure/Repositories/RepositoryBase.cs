@@ -7,25 +7,29 @@ namespace ToDeFerias.Bookings.Infrastructure.Repositories;
 
 public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : Entity, IAggregateRoot
 {
+    private readonly IUnitOfWork _unitOfWork;
+
     protected readonly BookingContext Context;
     protected readonly DbSet<T> DbSet;
 
-    protected RepositoryBase(BookingContext context)
+    protected RepositoryBase(BookingContext context,
+                             IUnitOfWork unitOfWork)
     {
         Context = context;
         DbSet = context.Set<T>();
+        _unitOfWork = unitOfWork;
     }
 
     public IUnitOfWork UnitOfWork =>
-        throw new NotImplementedException();
+        _unitOfWork;
 
-    public void Add(T entity) =>
+    public virtual void Add(T entity) =>
         DbSet.Add(entity);
 
-    public void Update(T entity) =>
+    public virtual void Update(T entity) =>
         DbSet.Update(entity);
 
-    public async Task Remove(Guid id)
+    public virtual async Task Remove(Guid id)
     {
         var entity = await GetById(id);
         if (entity is null)
@@ -34,12 +38,12 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : Entity, I
         DbSet.Remove(entity);
     }
 
-    public async Task<T?> GetById(Guid id) =>
+    public virtual async Task<T?> GetById(Guid id) =>
         await DbSet.FirstOrDefaultAsync(p => p.Id == id);
 
-    public async Task<IEnumerable<T>> GetAll() =>
+    public virtual async Task<IEnumerable<T>> GetAll() =>
         await DbSet.ToListAsync();
 
-    public void Dispose() =>
+    public virtual void Dispose() =>
         Context?.Dispose();
 }

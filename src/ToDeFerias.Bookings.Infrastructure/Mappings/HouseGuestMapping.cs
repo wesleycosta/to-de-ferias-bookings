@@ -30,6 +30,12 @@ public sealed class HouseGuestMapping : IEntityTypeConfiguration<HouseGuest>
                               .HasColumnName("DateOfBirth")
                               .HasColumnType("DATE"));
 
+        builder.Property(p => p.Created)
+               .HasDefaultValueSql("GETDATE()");
+
+        builder.Property(p => p.LastUpdated)
+               .HasDefaultValueSql("GETDATE()");
+
         builder.ToTable("HouseGuests");
     }
 }

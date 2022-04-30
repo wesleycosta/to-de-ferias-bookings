@@ -13,8 +13,6 @@ public abstract class CommandHandler
     public void NotifyError(string message) =>
         ValidationResult?.Errors.Add(new ValidationFailure(string.Empty, message));
 
-    public async Task<CommandHandlerResult> SaveData(IUnitOfWork unitOfWork) =>
-        await SaveData(unitOfWork, null);
 
     public async Task<CommandHandlerResult> SaveData(IUnitOfWork unitOfWork, object? responseCommand)
     {

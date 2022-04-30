@@ -13,7 +13,7 @@ public sealed class Booking : Entity, IAggregateRoot
     public byte Children { get; private set; }
     public BookingStatus Status { get; private set; }
 
-    public Guid HouseGuestId { get; set; }
+    public Guid HouseGuestId { get; private set; }
     public Guid RoomId { get; private set; }
 
     protected Booking() { }
@@ -26,8 +26,8 @@ public sealed class Booking : Entity, IAggregateRoot
                    byte adults,
                    byte children)
     {
-        HouseGuest = new HouseGuest(houseGuestId);
-        Room = new Room(roomId);
+        HouseGuestId = houseGuestId;
+        RoomId = roomId;
         DateRange = new(checkIn, checkOut);
         Value = value;
         Adults = adults;
