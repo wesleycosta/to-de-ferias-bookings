@@ -25,13 +25,14 @@ public sealed class RegisterBookingCommandHandler : CommandHandler, IRequestHand
         if (!request.IsValid())
             return BadCommand(request);
 
-        if (!await BusinessIsValid(request.InputModel))
+        if (!await RoomIsAvailable(request.InputModel))
             return BadCommand();
 
-        return Response(await SaveBooking(request.InputModel));
+        var commandHandlerResult = await SaveBooking(request.InputModel);
+        return Response(commandHandlerResult);
     }
 
-    private async Task<bool> BusinessIsValid(RegisterBookingInputModel inputModel)
+    private async Task<bool> RoomIsAvailable(RegisterBookingInputModel inputModel)
     {
         var dateRangeBooking = new DateRangeBooking(inputModel.CheckIn, inputModel.CheckOut);
 
@@ -48,11 +49,11 @@ public sealed class RegisterBookingCommandHandler : CommandHandler, IRequestHand
     {
         var houseGuest = await _houseGuestRepository.GetById(inputModel.HouseGuestId);
         if (houseGuest is null)
-            return BadCommand(ValidationMessages.NotFoundInTheDatabase("HouseGuestId"));
+            return BadCommand(ValidationMessages.NotFoundInDatabase("HouseGuestId"));
 
         var room = await _bookingRepository.GetRoomById(inputModel.RoomId);
         if (room is null)
-            return BadCommand(ValidationMessages.NotFoundInTheDatabase("RoomId"));
+            return BadCommand(ValidationMessages.NotFoundInDatabase("RoomId"));
 
         var booking = AddBooking(inputModel);
         var @event = new RegisteredBookingEvent(houseGuest,

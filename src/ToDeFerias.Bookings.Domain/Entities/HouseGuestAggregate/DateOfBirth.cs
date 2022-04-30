@@ -19,7 +19,7 @@ public sealed class DateOfBirth : IValueObject
     public static bool IsValid(DateTime birthday) =>
         birthday > MinValue && birthday <= DateTime.UtcNow.AddYears(-18);
 
-    public override bool Equals(object? obj)
+    public override bool Equals(object obj)
     {
         if (obj is not DateOfBirth date)
             return false;

@@ -42,7 +42,7 @@ public abstract class MainController : ControllerBase
         return CustomResponse<T>(result.Response, statusCode, url);
     }
 
-    private IActionResult CustomResponse<T>(ValidationResult? validationResult) where T : class, new()
+    private IActionResult CustomResponse<T>(ValidationResult validationResult) where T : class, new()
     {
         ArgumentNullException.ThrowIfNull(validationResult);
 
@@ -52,7 +52,7 @@ public abstract class MainController : ControllerBase
         return CustomResponse<T>();
     }
 
-    private IActionResult CustomResponse<T>(object? result = null,
+    private IActionResult CustomResponse<T>(object result = null,
                                             HttpStatusCode statusCode = HttpStatusCode.OK,
                                             string url = "") where T : class, new()
     {
@@ -68,7 +68,7 @@ public abstract class MainController : ControllerBase
     private IActionResult BadRequestResponse() =>
         BadRequest(new BadRequestResponseDto(Notifier.GetNotifications()));
 
-    private IActionResult HttpStatusCodeRespose<T>(object? result = null,
+    private IActionResult HttpStatusCodeRespose<T>(object result = null,
                                                    HttpStatusCode statusCode = HttpStatusCode.OK,
                                                    string url = "") where T : class, new()
     {

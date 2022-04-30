@@ -27,7 +27,7 @@ public sealed class DateRangeBooking : IValueObject
     private static bool IsValidDate(DateTime date) =>
         date > MinValue;
 
-    public override bool Equals(object? obj)
+    public override bool Equals(object obj)
     {
         if (obj is not DateRangeBooking date)
             return false;

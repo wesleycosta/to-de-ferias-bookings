@@ -8,11 +8,8 @@ public sealed class RegisterBookingCommand : Command
 {
     public RegisterBookingInputModel InputModel { get; private set; }
 
-    public RegisterBookingCommand(RegisterBookingInputModel inputModel)
-    {
-        AggregateId = Guid.NewGuid();
+    public RegisterBookingCommand(RegisterBookingInputModel inputModel) =>
         InputModel = inputModel;
-    }
 
     public override bool IsValid()
     {

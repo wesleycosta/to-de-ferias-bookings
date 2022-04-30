@@ -13,7 +13,7 @@ internal sealed class BookingRepository : RepositoryBase<Booking>, IBookingRepos
     {
     }
 
-    public async Task<Room?> GetRoomById(Guid id) =>
+    public async Task<Room> GetRoomById(Guid id) =>
         await Context.Set<Room>()
                      .FirstOrDefaultAsync(p => p.Id.Equals(id));
 

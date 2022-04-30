@@ -10,7 +10,7 @@ public sealed class Email : IValueObject
     public static readonly byte MaxLength = 254;
     public string Address { get; private set; }
 
-    protected Email() { }
+    public Email() { }
 
     public Email(string emailAddress)
     {
@@ -29,7 +29,7 @@ public sealed class Email : IValueObject
         return regexEmail.IsMatch(email);
     }
 
-    public override bool Equals(object? obj)
+    public override bool Equals(object obj)
     {
         if (obj is not Email email)
             return false;

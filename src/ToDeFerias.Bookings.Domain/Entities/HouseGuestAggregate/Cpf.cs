@@ -25,7 +25,7 @@ public sealed class Cpf : IValueObject
         return new CpfValidador(cpf).EstaValido();
     }
 
-    public override bool Equals(object? obj)
+    public override bool Equals(object obj)
     {
         if (obj is not Cpf email)
             return false;

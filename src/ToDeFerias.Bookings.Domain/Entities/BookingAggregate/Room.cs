@@ -10,7 +10,7 @@ public sealed class Room : Entity
     public Guid RoomTypeId { get; private set; }
     public List<Booking> Bookings { get; set; }
 
-    protected Room() { }
+    public Room() { }
 
     public Room(Guid id) =>
         Id = id;
@@ -21,4 +21,7 @@ public sealed class Room : Entity
         Number = number;
         RoomTypeId = roomTypeId;
     }
+
+    public void SetId(Guid id) =>
+        Id = id;
 }

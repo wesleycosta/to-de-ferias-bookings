@@ -16,7 +16,7 @@ public sealed class Booking : Entity, IAggregateRoot
     public Guid HouseGuestId { get; private set; }
     public Guid RoomId { get; private set; }
 
-    protected Booking() { }
+    public Booking() { }
 
     public Booking(Guid houseGuestId,
                    Guid roomId,
@@ -26,6 +26,7 @@ public sealed class Booking : Entity, IAggregateRoot
                    byte adults,
                    byte children)
     {
+        Id = Guid.NewGuid();
         HouseGuestId = houseGuestId;
         RoomId = roomId;
         DateRange = new(checkIn, checkOut);

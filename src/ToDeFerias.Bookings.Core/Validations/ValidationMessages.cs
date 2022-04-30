@@ -11,6 +11,6 @@ public sealed class ValidationMessages
     public static string GreaterThan(string field, int number = 0) =>
         $"Field {field} should be greater than {number}";
 
-    public static string NotFoundInTheDatabase(string field) =>
+    public static string NotFoundInDatabase(string field) =>
         $"Field {field} was not found in the database";
 }

@@ -27,7 +27,10 @@ public abstract class Entity
     public void ClearEvents() =>
         _eventNotification?.Clear();
 
-    public override bool Equals(object? obj)
+    public bool ContainsEvent(string eventType) =>
+        _eventNotification.Any(p => p?.MessageType == eventType);
+
+    public override bool Equals(object obj)
     {
         var compareTo = obj as Entity;
 

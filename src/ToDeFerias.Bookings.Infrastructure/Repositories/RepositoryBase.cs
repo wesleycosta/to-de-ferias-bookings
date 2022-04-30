@@ -7,7 +7,7 @@ namespace ToDeFerias.Bookings.Infrastructure.Repositories;
 
 public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : Entity, IAggregateRoot
 {
-    private readonly IUnitOfWork _unitOfWork;
+    public IUnitOfWork UnitOfWork { get; }
 
     protected readonly BookingContext Context;
     protected readonly DbSet<T> DbSet;
@@ -17,11 +17,8 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : Entity, I
     {
         Context = context;
         DbSet = context.Set<T>();
-        _unitOfWork = unitOfWork;
+        UnitOfWork = unitOfWork;
     }
-
-    public IUnitOfWork UnitOfWork =>
-        _unitOfWork;
 
     public virtual void Add(T entity) =>
         DbSet.Add(entity);
@@ -38,7 +35,7 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : Entity, I
         DbSet.Remove(entity);
     }
 
-    public virtual async Task<T?> GetById(Guid id) =>
+    public virtual async Task<T> GetById(Guid id) =>
         await DbSet.FirstOrDefaultAsync(p => p.Id == id);
 
     public virtual async Task<IEnumerable<T>> GetAll() =>
