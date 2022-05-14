@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using ToDeFerias.Bookings.Api.Infrastructure.Api.Attributes;
+using ToDeFerias.Bookings.Api.Infrastructure.Api.Logger;
 using ToDeFerias.Bookings.Api.Infrastructure.Notifications;
+using ToDeFerias.Bookings.Domain.Services.Logger;
 
 namespace ToDeFerias.Bookings.Api.Infrastructure.Api.Configurations;
 
@@ -13,14 +15,20 @@ internal static class ApiConfiguration
         return services.AddEndpointsApiExplorer()
                        .AddSwagger()
                        .AddNotifications()
-                       .AddSettings(configuration);
+                       .AddTraceLogger()
+                       .AddSettings(configuration)
+                       .AddHttpContextAccessor();
     }
 
-    public static IServiceCollection AddNotifications(this IServiceCollection services) =>
+    private static IServiceCollection AddNotifications(this IServiceCollection services) =>
          services.AddScoped<INotifier, Notifier>();
+
+    private static IServiceCollection AddTraceLogger(this IServiceCollection services) =>
+        services.AddSingleton<ITraceLogger, TraceLogger>();
 
     public static void UseApiConfiguration(this IApplicationBuilder app) =>
         app.UseSwaggerConfiguration()
            .UseHttpsRedirection()
+           .UseMiddlewares()
            .UseAuthorization();
 }
