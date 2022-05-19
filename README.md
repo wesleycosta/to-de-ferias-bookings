@@ -1,5 +1,5 @@
 # to-de-ferias-booking
-Sistema distribuído em .NET 6 para gerenciamento de reservas.
+Microsserviço responsável pelo gerenciamento de reservas.
 
 [![CodeFactor](https://www.codefactor.io/repository/github/wesleycosta/to-de-ferias-booking/badge)](https://www.codefactor.io/repository/github/wesleycosta/to-de-ferias-booking)
 
@@ -19,11 +19,13 @@ Arquitetura construida com preocupações de separação de responsabilidades, s
 ## Componentes
 - AutoFixture
 - AutoMapper
+- ELK
 - EntityFramework
 - FluentValidation
 - MediatR
 - Moq
 - NetDevPack.Brasil
+- Serilog
 - Swagger
 - XUnit
 

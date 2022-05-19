@@ -1,6 +1,6 @@
 ﻿using ToDeFerias.Bookings.Core.Messages;
-using ToDeFerias.Bookings.Domain.Entities.BookingAggregate;
-using ToDeFerias.Bookings.Domain.Entities.HouseGuestAggregate;
+using ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate;
+using ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate;
 
 namespace ToDeFerias.Bookings.Domain.Events.Bookings;
 

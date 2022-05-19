@@ -3,15 +3,15 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Serilog;
 using ToDeFerias.Bookings.Core.Data;
+using ToDeFerias.Bookings.Core.Logger;
 using ToDeFerias.Bookings.Core.Mediator;
-using ToDeFerias.Bookings.Domain.Repositories;
-using ToDeFerias.Bookings.Domain.Services.Logger;
+using ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate;
+using ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate;
 using ToDeFerias.Bookings.Infrastructure.Context;
+using ToDeFerias.Bookings.Infrastructure.Data.Repositories;
 using ToDeFerias.Bookings.Infrastructure.Logger;
 using ToDeFerias.Bookings.Infrastructure.Mediator;
-using ToDeFerias.Bookings.Infrastructure.Repositories;
 
 namespace ToDeFerias.Bookings.Infrastructure;
 

@@ -1,5 +1,5 @@
 ﻿using Serilog;
-using ToDeFerias.Bookings.Domain.Services.Logger;
+using ToDeFerias.Bookings.Core.Logger;
 
 namespace ToDeFerias.Bookings.Infrastructure.Logger;
 

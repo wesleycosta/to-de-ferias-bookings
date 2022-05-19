@@ -10,14 +10,14 @@ public abstract class CommandHandler
     public CommandHandler() =>
         ValidationResult = new ValidationResult();
 
-    public void NotifyError(string message) =>
+    public void Notify(string message) =>
         ValidationResult?.Errors.Add(new ValidationFailure(string.Empty, message));
 
-    public async Task<CommandHandlerResult> SaveData(IUnitOfWork unitOfWork, object? responseCommand)
+    public async Task<CommandHandlerResult> SaveData(IUnitOfWork unitOfWork, object responseCommand)
     {
         if (!await unitOfWork.Commit())
         {
-            NotifyError("Houve um erro ao persistir os dados");
+            Notify("Houve um erro ao persistir os dados");
             responseCommand = null;
         }
 
@@ -39,7 +39,7 @@ public abstract class CommandHandler
 
     public CommandHandlerResult BadCommand(string message)
     {
-        NotifyError(message);
+        Notify(message);
         return BadCommand();
     }
 

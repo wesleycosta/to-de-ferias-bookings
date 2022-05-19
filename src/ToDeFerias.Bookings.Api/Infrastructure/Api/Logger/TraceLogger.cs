@@ -1,4 +1,4 @@
-﻿using ToDeFerias.Bookings.Domain.Services.Logger;
+﻿using ToDeFerias.Bookings.Core.Logger;
 
 namespace ToDeFerias.Bookings.Api.Infrastructure.Api.Logger;
 
@@ -11,7 +11,9 @@ public sealed class TraceLogger : ITraceLogger
 
     public Guid GetTraceId()
     {
-        string traceId = _httpContextAccessor.HttpContext.Response.Headers["TraceId"];
+        var traceId = _httpContextAccessor.HttpContext
+                                          .Response
+                                          .Headers["TraceId"];
 
         if (Guid.TryParse(traceId, out _))
             return Guid.Parse(traceId);

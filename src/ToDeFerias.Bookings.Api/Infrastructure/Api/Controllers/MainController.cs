@@ -47,7 +47,7 @@ public abstract class MainController : ControllerBase
         ArgumentNullException.ThrowIfNull(validationResult);
 
         foreach (var erro in validationResult.Errors)
-            NotifyError(erro.ErrorMessage);
+            Notify(erro.ErrorMessage);
 
         return CustomResponse<T>();
     }
@@ -84,6 +84,6 @@ public abstract class MainController : ControllerBase
         return StatusCode((int)statusCode);
     }
 
-    protected void NotifyError(string message) =>
+    protected void Notify(string message) =>
         Notifier.Send(new Notification(message));
 }

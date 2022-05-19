@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ToDeFerias.Bookings.Api.DTOs;
 using ToDeFerias.Bookings.Core.Messages;
-using ToDeFerias.Bookings.Domain.Entities.BookingAggregate;
+using ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate;
 
 namespace ToDeFerias.Bookings.Api.Infrastructure.Mappers;
 

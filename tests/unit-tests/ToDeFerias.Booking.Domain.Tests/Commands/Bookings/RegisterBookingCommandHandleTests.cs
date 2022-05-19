@@ -1,12 +1,12 @@
 ﻿using FluentAssertions;
 using Moq;
 using ToDeFerias.Bookings.Core.Data;
+using ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate;
+using ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate;
 using ToDeFerias.Bookings.Domain.Commands.Bookings;
-using ToDeFerias.Bookings.Domain.Entities.BookingAggregate;
-using ToDeFerias.Bookings.Domain.Repositories;
+using ToDeFerias.Bookings.Domain.Tests.Builders.Aggregates.BookingAggregate;
+using ToDeFerias.Bookings.Domain.Tests.Builders.Aggregates.HouseGuestAggregate;
 using ToDeFerias.Bookings.Domain.Tests.Builders.Commands;
-using ToDeFerias.Bookings.Domain.Tests.Builders.Entities.BookingAggregate;
-using ToDeFerias.Bookings.Domain.Tests.Builders.Entities.HouseGuestAggregate;
 using Xunit;
 
 namespace ToDeFerias.Bookings.Domain.Tests.Commands.Bookings;

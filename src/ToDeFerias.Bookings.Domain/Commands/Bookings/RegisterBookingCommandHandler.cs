@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using ToDeFerias.Bookings.Core.Messages;
 using ToDeFerias.Bookings.Core.Validations;
-using ToDeFerias.Bookings.Domain.Entities.BookingAggregate;
+using ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate;
+using ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate;
 using ToDeFerias.Bookings.Domain.Events.Bookings;
 using ToDeFerias.Bookings.Domain.Inputs.Bookings;
-using ToDeFerias.Bookings.Domain.Repositories;
 
 namespace ToDeFerias.Bookings.Domain.Commands.Bookings;
 
@@ -38,7 +38,7 @@ public sealed class RegisterBookingCommandHandler : CommandHandler, IRequestHand
 
         if (await _bookingRepository.ItsBooked(inputModel.RoomId, dateRangeBooking))
         {
-            NotifyError($"There is already a booking registered in the period {dateRangeBooking}");
+            Notify($"There is already a booking registered in the period {dateRangeBooking}");
             return false;
         }
 

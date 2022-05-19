@@ -56,9 +56,9 @@ public abstract class Entity
     public static bool operator !=(Entity a, Entity b) =>
         !(a == b);
 
-    public override int GetHashCode() =>
-        (GetType().GetHashCode() * 907) + Id.GetHashCode();
-
     public override string ToString() =>
         GetType().Name + " [Id=" + Id + "]";
+
+    public override int GetHashCode() =>
+        (GetType().GetHashCode() * 907) + Id.GetHashCode();
 }

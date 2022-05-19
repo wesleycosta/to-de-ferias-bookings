@@ -39,23 +39,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infrastructure", "3 - Infrastructure", "{BF1F8644-5799-4CBA-8551-C3B837345CEC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{B1376E48-3B79-4BD8-B4BF-01D6761B3A3E}"
-	ProjectSection(SolutionItems) = preProject
-		..\sql\seed.sql = ..\sql\seed.sql
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "integration-tests", "integration-tests", "{CCC06713-C0FE-48DB-A9B1-806F23C18013}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDeFerias.Bookings.Api.Tests", "..\tests\integration-tests\ToDeFerias.Bookings.Api.Tests\ToDeFerias.Bookings.Api.Tests.csproj", "{D16FEEC3-1A6F-45C4-A4C2-D7E1D5386CE3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mssql", "mssql", "{6431B650-76D3-44BD-AEEF-96E9CBE07A38}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "development", "development", "{BAB329DE-9305-4497-805A-AF8D354A895A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{C9EEFE63-FF5C-4B51-B3B1-0E10EC10F340}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{E7D3D87C-2DEB-4AC5-B9E3-325A7FA95B8F}"
 	ProjectSection(SolutionItems) = preProject
-		..\devops\mssql\docker-compose.yml = ..\devops\mssql\docker-compose.yml
+		..\development\sql\seed.sql = ..\development\sql\seed.sql
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "elk", "elk", "{DF3E7A00-796B-41B1-A3DB-DAB1C6FE1062}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "elk", "elk", "{C02F25D5-6BE1-49BC-811C-940679D24943}"
 	ProjectSection(SolutionItems) = preProject
-		..\devops\elk\docker-compose.yml = ..\devops\elk\docker-compose.yml
+		..\development\docker\elk\docker-compose.yml = ..\development\docker\elk\docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mssql", "mssql", "{72DF34B0-D9D0-4F59-B617-7F2130F211DF}"
+	ProjectSection(SolutionItems) = preProject
+		..\development\docker\mssql\docker-compose.yml = ..\development\docker\mssql\docker-compose.yml
 	EndProjectSection
 EndProject
 Global
@@ -103,11 +107,13 @@ Global
 		{BE1E962D-4DF0-420B-9A51-56E12524D866} = {43C98045-5A9A-464D-9269-B4EA0341AFDF}
 		{DC0D2D27-2845-419B-9528-4BEFCCA6D24E} = {43C98045-5A9A-464D-9269-B4EA0341AFDF}
 		{BF1F8644-5799-4CBA-8551-C3B837345CEC} = {43C98045-5A9A-464D-9269-B4EA0341AFDF}
-		{B1376E48-3B79-4BD8-B4BF-01D6761B3A3E} = {B783300E-DE52-4FE7-9D85-A006E9AAE0E9}
 		{CCC06713-C0FE-48DB-A9B1-806F23C18013} = {7390F03E-4994-468A-ACFC-4770E1F127DC}
 		{D16FEEC3-1A6F-45C4-A4C2-D7E1D5386CE3} = {CCC06713-C0FE-48DB-A9B1-806F23C18013}
-		{6431B650-76D3-44BD-AEEF-96E9CBE07A38} = {A8703BA9-169B-4CAA-AE2C-2BCBC27D4955}
-		{DF3E7A00-796B-41B1-A3DB-DAB1C6FE1062} = {A8703BA9-169B-4CAA-AE2C-2BCBC27D4955}
+		{BAB329DE-9305-4497-805A-AF8D354A895A} = {B783300E-DE52-4FE7-9D85-A006E9AAE0E9}
+		{C9EEFE63-FF5C-4B51-B3B1-0E10EC10F340} = {BAB329DE-9305-4497-805A-AF8D354A895A}
+		{E7D3D87C-2DEB-4AC5-B9E3-325A7FA95B8F} = {BAB329DE-9305-4497-805A-AF8D354A895A}
+		{C02F25D5-6BE1-49BC-811C-940679D24943} = {C9EEFE63-FF5C-4B51-B3B1-0E10EC10F340}
+		{72DF34B0-D9D0-4F59-B617-7F2130F211DF} = {C9EEFE63-FF5C-4B51-B3B1-0E10EC10F340}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {15163729-D6F1-4904-9EF2-3BA20C38869F}
