@@ -9,21 +9,26 @@ public sealed class BookingMapping : IEntityTypeConfiguration<Booking>
 {
     public void Configure(EntityTypeBuilder<Booking> builder)
     {
-        builder.HasKey(p => p.Id)
-               .HasName("Id");
+        builder.HasKey(p => p.Id);
+
+        builder.Property(p => p.Id)
+               .HasColumnName("Id");
 
         builder.OwnsOne(p => p.DateRange,
                         dateRange =>
                         {
                             dateRange.Property(c => c.CheckIn)
+                                     .IsRequired()
                                      .HasColumnName("CheckIn");
 
                             dateRange.Property(c => c.CheckOut)
+                                     .IsRequired()
                                      .HasColumnName("CheckOut");
                         });
 
         builder.Property(p => p.Value)
                .IsRequired()
+               .HasPrecision(12, 2)
                .HasColumnName("Value");
 
         builder.Property(p => p.Adults)
@@ -37,21 +42,22 @@ public sealed class BookingMapping : IEntityTypeConfiguration<Booking>
         builder.Property(p => p.Status)
                .IsRequired()
                .HasColumnName("Status")
-               .HasConversion(new EnumToStringConverter<BookingStatus>());
+               .HasConversion(new EnumToStringConverter<BookingStatus>())
+               .HasMaxLength(255);
 
         builder.Property(p => p.Created)
                .HasColumnName("Created");
 
         builder.Property(p => p.LastUpdated)
-               .HasColumnName("Created");
+               .HasColumnName("LastUpdated");
 
-        builder.HasOne(c => c.HouseGuest)
-               .WithMany(c => c.Bookings)
+        builder.HasOne(p => p.HouseGuest)
+               .WithMany(p => p.Bookings)
                .HasForeignKey(c => c.HouseGuestId);
 
-        builder.HasOne(c => c.Room)
-               .WithMany(c => c.Bookings)
-               .HasForeignKey(c => c.RoomId);
+        builder.HasOne(p => p.Room)
+               .WithMany(p => p.Bookings)
+               .HasForeignKey(p => p.RoomId);
 
         builder.ToTable("Bookings");
     }

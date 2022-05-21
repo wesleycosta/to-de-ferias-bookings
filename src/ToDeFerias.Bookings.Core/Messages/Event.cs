@@ -4,8 +4,8 @@ namespace ToDeFerias.Bookings.Core.Messages;
 
 public abstract class Event : Message, INotification
 {
-    public DateTime? Timestamp { get; private set; }
+    public DateTimeOffset? Timestamp { get; private set; }
 
     public Event() =>
-        Timestamp = DateTime.Now;
+        Timestamp = DateTimeOffset.Now;
 }

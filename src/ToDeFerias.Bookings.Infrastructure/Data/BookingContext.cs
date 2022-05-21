@@ -13,7 +13,7 @@ public sealed class BookingContext : DbContext, IUnitOfWork
     private readonly IMediatorHandler _mediatorHandler;
 
     public BookingContext(DbContextOptions<BookingContext> options,
-                                    IMediatorHandler mediatorHandler) : base(options)
+                          IMediatorHandler mediatorHandler) : base(options)
     {
         _mediatorHandler = mediatorHandler;
         ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
@@ -22,10 +22,16 @@ public sealed class BookingContext : DbContext, IUnitOfWork
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        foreach (var property in modelBuilder.Model
+                                             .GetEntityTypes()
+                                             .SelectMany(e => e.GetProperties()
+                                                               .Where(p => p.ClrType == typeof(string))))
+            property.SetColumnType("VARCHAR(255)");
+
         modelBuilder.Ignore<ValidationResult>();
         modelBuilder.Ignore<Event>();
-        
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
         base.OnModelCreating(modelBuilder);
     }
 

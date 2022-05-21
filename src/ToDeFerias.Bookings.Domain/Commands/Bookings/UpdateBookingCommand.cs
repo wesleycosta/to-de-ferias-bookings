@@ -4,16 +4,19 @@ using ToDeFerias.Bookings.Domain.Inputs.Bookings;
 
 namespace ToDeFerias.Bookings.Domain.Commands.Bookings;
 
-public sealed class RegisterBookingCommand : Command
+public sealed class UpdateBookingCommand : Command
 {
-    public RegisterBookingInputModel InputModel { get; private set; }
+    public UpdateBookingInputModel InputModel { get; private set; }
 
-    public RegisterBookingCommand(RegisterBookingInputModel inputModel) =>
+    public UpdateBookingCommand(Guid bookingId, UpdateBookingInputModel inputModel)
+    {
+        AggregateId = bookingId;
         InputModel = inputModel;
+    }
 
     public override bool IsValid()
     {
-        ValidationResult = new RegisterBookingValidation().Validate(this);
+        ValidationResult = new UpdateBookingValidation().Validate(this);
         return ValidationResult.IsValid;
     }
 }

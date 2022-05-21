@@ -20,8 +20,8 @@ public sealed class Booking : Entity, IAggregateRoot
 
     public Booking(Guid houseGuestId,
                    Guid roomId,
-                   DateTime checkIn,
-                   DateTime checkOut,
+                   DateTimeOffset checkIn,
+                   DateTimeOffset checkOut,
                    decimal value,
                    byte adults,
                    byte children)
@@ -34,5 +34,28 @@ public sealed class Booking : Entity, IAggregateRoot
         Adults = adults;
         Children = children;
         Status = BookingStatus.Booked;
+        Created = DateTimeOffset.UtcNow;
     }
+
+    public void Update(decimal value,
+                       byte adults,
+                       byte children,
+                       DateTimeOffset checkIn,
+                       DateTimeOffset checkOut)
+    {
+        Value = value;
+        Adults = adults;
+        Children = children;
+        DateRange = new(checkIn, checkOut);
+        LastUpdated = DateTimeOffset.UtcNow;
+    }
+
+    public void SetHouseGuest(HouseGuest houseGuest) =>
+        HouseGuest = houseGuest;
+
+    public void SetHouseGuest(Room room) =>
+        Room = room;
+
+    public bool HasDateChanged(DateRangeBooking dateRange) =>
+        !DateRange.Equals(dateRange);
 }

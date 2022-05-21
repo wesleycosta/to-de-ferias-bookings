@@ -3,23 +3,18 @@ using ToDeFerias.Bookings.Core.Validations;
 
 namespace ToDeFerias.Bookings.Domain.Commands.Bookings.Validations;
 
-public sealed class BookingValidation : AbstractValidator<RegisterBookingCommand>
+public sealed class UpdateBookingValidation : AbstractValidator<UpdateBookingCommand>
 {
-    public BookingValidation()
+    public UpdateBookingValidation()
     {
         RuleFor(command => command.AggregateId)
             .NotEqual(Guid.Empty)
             .WithMessage(ValidationMessages.IdentifierIsInvalid());
 
-        RuleFor(command => command.InputModel.HouseGuestId)
+        RuleFor(command => command.AggregateId)
             .NotEmpty()
             .NotNull()
-            .WithMessage(ValidationMessages.NotInformed("HouseGuestId"));
-
-        RuleFor(command => command.InputModel.RoomId)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage(ValidationMessages.NotInformed("RoomId"));
+            .WithMessage(ValidationMessages.NotInformed("BookingId"));
 
         RuleFor(command => command.InputModel.CheckIn)
             .NotEmpty()

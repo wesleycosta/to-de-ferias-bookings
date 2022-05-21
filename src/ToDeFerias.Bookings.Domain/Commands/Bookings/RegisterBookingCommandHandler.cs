@@ -28,8 +28,8 @@ public sealed class RegisterBookingCommandHandler : CommandHandler, IRequestHand
         if (!await RoomIsAvailable(request.InputModel))
             return BadCommand();
 
-        var commandHandlerResult = await SaveBooking(request.InputModel);
-        return Response(commandHandlerResult);
+        var commandResult = await SaveBooking(request.InputModel);
+        return Response(commandResult);
     }
 
     private async Task<bool> RoomIsAvailable(RegisterBookingInputModel inputModel)
@@ -64,6 +64,8 @@ public sealed class RegisterBookingCommandHandler : CommandHandler, IRequestHand
                                                 booking.Children);
 
         booking.AddEvent(@event);
+        booking.SetHouseGuest(houseGuest);
+        booking.SetHouseGuest(room);
 
         return await SaveData(_bookingRepository.UnitOfWork, booking);
     }

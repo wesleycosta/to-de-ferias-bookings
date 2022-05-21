@@ -4,12 +4,12 @@ namespace ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate;
 
 public sealed class DateRangeBooking : IValueObject
 {
-    public static readonly DateTime MinValue = new(1900, 1, 1);
+    public static readonly DateTimeOffset MinValue = new(new DateTime(2010, 01, 01), TimeSpan.Zero);
 
-    public DateTime CheckIn { get; private set; }
-    public DateTime CheckOut { get; private set; }
+    public DateTimeOffset CheckIn { get; private set; }
+    public DateTimeOffset CheckOut { get; private set; }
 
-    public DateRangeBooking(DateTime checkIn, DateTime checkOut)
+    public DateRangeBooking(DateTimeOffset checkIn, DateTimeOffset checkOut)
     {
         if (!IsValidDate(checkIn))
             throw new DomainException("CheckInDate is invalid");
@@ -21,10 +21,10 @@ public sealed class DateRangeBooking : IValueObject
         CheckOut = checkOut;
     }
 
-    public static bool IsValid(DateTime checkIn, DateTime checkOut) =>
+    public static bool IsValid(DateTimeOffset checkIn, DateTimeOffset checkOut) =>
         IsValidDate(checkIn) && IsValidDate(checkOut);
 
-    private static bool IsValidDate(DateTime date) =>
+    private static bool IsValidDate(DateTimeOffset date) =>
         date > MinValue;
 
     public override bool Equals(object obj)

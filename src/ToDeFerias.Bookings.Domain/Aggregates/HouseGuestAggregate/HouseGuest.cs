@@ -16,10 +16,11 @@ public sealed class HouseGuest : Entity, IAggregateRoot
     public HouseGuest(Guid id) =>
         Id = id;
 
-    public HouseGuest(Guid id, string name, string emailAddress)
+    public HouseGuest(Guid id, string name, string emailAddress, string cpf)
     {
         Id = id;
         Name = name;
         Email = new Email(emailAddress);
+        Cpf = new Cpf(cpf);
     }
 }

@@ -26,14 +26,14 @@ internal sealed class RegisterBookingInputModelBuilder : BaseBuilderWithAutoFixt
         return this;
     }
 
-    public RegisterBookingInputModelBuilder WithCheckIn(DateTime checkIn)
+    public RegisterBookingInputModelBuilder WithCheckIn(DateTimeOffset checkIn)
     {
         Object.CheckIn = checkIn;
 
         return this;
     }
 
-    public RegisterBookingInputModelBuilder WithCheckOut(DateTime checkOut)
+    public RegisterBookingInputModelBuilder WithCheckOut(DateTimeOffset checkOut)
     {
         Object.CheckOut = checkOut;
 

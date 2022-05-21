@@ -34,8 +34,8 @@ public sealed class RegisterBookingCommandHandleTests
         // arrange
         var houseGuestId = Guid.NewGuid();
         var roomId = Guid.NewGuid();
-        var checkIn = DateTime.Now;
-        var checkOut = DateTime.Now;
+        var checkIn = DateTimeOffset.UtcNow;
+        var checkOut = DateTimeOffset.UtcNow;
         var value = 100.33m;
         byte adults = 2;
         byte children = 1;

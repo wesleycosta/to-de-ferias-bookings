@@ -13,8 +13,9 @@ public static class DomainConfigModule
                 .AddEvents();
 
     private static IServiceCollection AddCommands(this IServiceCollection services) =>
-        services.AddScoped<IRequestHandler<RegisterBookingCommand, CommandHandlerResult>, RegisterBookingCommandHandler>();
-
+        services.AddScoped<IRequestHandler<RegisterBookingCommand, CommandHandlerResult>, RegisterBookingCommandHandler>()
+                .AddScoped<IRequestHandler<UpdateBookingCommand, CommandHandlerResult>, UpdateBookingCommandHandler>();
+    
     private static IServiceCollection AddEvents(this IServiceCollection services) =>
        services.AddScoped<INotificationHandler<RegisteredBookingEvent>, RegisteredBookingHandler>();
 }

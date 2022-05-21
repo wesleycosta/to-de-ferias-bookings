@@ -4,11 +4,11 @@ namespace ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate;
 
 public sealed class DateOfBirth : IValueObject
 {
-    public static readonly DateTime MinValue = new(1900, 1, 1);
+    public static readonly DateTimeOffset MinValue = new(new DateTime(1900, 01, 01), TimeSpan.Zero);
 
-    public DateTime Birthday { get; private set; }
+    public DateTimeOffset Birthday { get; private set; }
 
-    public DateOfBirth(DateTime birthday)
+    public DateOfBirth(DateTimeOffset birthday)
     {
         if (!IsValid(birthday))
             throw new DomainException("Birthday is invalid");
@@ -16,8 +16,8 @@ public sealed class DateOfBirth : IValueObject
         Birthday = birthday;
     }
 
-    public static bool IsValid(DateTime birthday) =>
-        birthday > MinValue && birthday <= DateTime.UtcNow.AddYears(-18);
+    public static bool IsValid(DateTimeOffset birthday) =>
+        birthday > MinValue && birthday <= DateTimeOffset.UtcNow.AddYears(-18);
 
     public override bool Equals(object obj)
     {

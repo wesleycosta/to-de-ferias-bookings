@@ -12,52 +12,57 @@ using ToDeFerias.Bookings.Infrastructure.Context;
 namespace ToDeFerias.Bookings.Infrastructure.Migrations
 {
     [DbContext(typeof(BookingContext))]
-    [Migration("20220430002410_InitialMigration")]
+    [Migration("20220521030155_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.4")
+                .HasAnnotation("ProductVersion", "6.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Entities.BookingAggregate.Booking", b =>
+            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate.Booking", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("Id");
 
                     b.Property<byte>("Adults")
-                        .HasColumnType("TINYINT");
+                        .HasColumnType("tinyint")
+                        .HasColumnName("Adults");
 
                     b.Property<byte>("Children")
-                        .HasColumnType("TINYINT");
+                        .HasColumnType("tinyint")
+                        .HasColumnName("Children");
 
-                    b.Property<DateTime>("Created")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                    b.Property<DateTimeOffset>("Created")
+                        .HasColumnType("datetimeoffset")
+                        .HasColumnName("Created");
 
                     b.Property<Guid>("HouseGuestId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime?>("LastUpdated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                    b.Property<DateTimeOffset?>("LastUpdated")
+                        .HasColumnType("datetimeoffset")
+                        .HasColumnName("LastUpdated");
 
                     b.Property<Guid>("RoomId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasColumnName("Status");
 
                     b.Property<decimal>("Value")
-                        .HasColumnType("DECIMAL(12,2)");
+                        .HasPrecision(12, 2)
+                        .HasColumnType("decimal(12,2)")
+                        .HasColumnName("Value");
 
                     b.HasKey("Id");
 
@@ -68,24 +73,24 @@ namespace ToDeFerias.Bookings.Infrastructure.Migrations
                     b.ToTable("Bookings", (string)null);
                 });
 
-            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Entities.BookingAggregate.Room", b =>
+            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate.Room", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("Id");
 
-                    b.Property<DateTime>("Created")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                    b.Property<DateTimeOffset>("Created")
+                        .HasColumnType("datetimeoffset")
+                        .HasColumnName("Created");
 
-                    b.Property<DateTime?>("LastUpdated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                    b.Property<DateTimeOffset?>("LastUpdated")
+                        .HasColumnType("datetimeoffset")
+                        .HasColumnName("LastUpdated");
 
                     b.Property<byte>("Number")
-                        .HasColumnType("TINYINT");
+                        .HasColumnType("tinyint")
+                        .HasColumnName("Number");
 
                     b.Property<Guid>("RoomTypeId")
                         .HasColumnType("uniqueidentifier");
@@ -97,81 +102,81 @@ namespace ToDeFerias.Bookings.Infrastructure.Migrations
                     b.ToTable("Rooms", (string)null);
                 });
 
-            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Entities.BookingAggregate.RoomType", b =>
+            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate.RoomType", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("Id");
 
-                    b.Property<DateTime>("Created")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                    b.Property<DateTimeOffset>("Created")
+                        .HasColumnType("datetimeoffset")
+                        .HasColumnName("Created");
 
-                    b.Property<DateTime?>("LastUpdated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                    b.Property<DateTimeOffset?>("LastUpdated")
+                        .HasColumnType("datetimeoffset")
+                        .HasColumnName("LastUpdated");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("VARCHAR(255)");
+                        .HasColumnType("VARCHAR(255)")
+                        .HasColumnName("Name");
 
                     b.HasKey("Id");
 
                     b.ToTable("RoomTypes", (string)null);
                 });
 
-            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Entities.HouseGuestAggregate.HouseGuest", b =>
+            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate.HouseGuest", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("Id");
 
-                    b.Property<DateTime>("Created")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                    b.Property<DateTimeOffset>("Created")
+                        .HasColumnType("datetimeoffset")
+                        .HasColumnName("Created");
 
-                    b.Property<DateTime?>("LastUpdated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                    b.Property<DateTimeOffset?>("LastUpdated")
+                        .HasColumnType("datetimeoffset")
+                        .HasColumnName("LastUpdated");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("VARCHAR(255)");
+                        .HasColumnType("VARCHAR(255)")
+                        .HasColumnName("Name");
 
                     b.HasKey("Id");
 
                     b.ToTable("HouseGuests", (string)null);
                 });
 
-            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Entities.BookingAggregate.Booking", b =>
+            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate.Booking", b =>
                 {
-                    b.HasOne("ToDeFerias.Bookings.Domain.Entities.HouseGuestAggregate.HouseGuest", "HouseGuest")
+                    b.HasOne("ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate.HouseGuest", "HouseGuest")
                         .WithMany("Bookings")
                         .HasForeignKey("HouseGuestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ToDeFerias.Bookings.Domain.Entities.BookingAggregate.Room", "Room")
+                    b.HasOne("ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate.Room", "Room")
                         .WithMany("Bookings")
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("ToDeFerias.Bookings.Domain.Entities.BookingAggregate.DateRangeBooking", "DateRange", b1 =>
+                    b.OwnsOne("ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate.DateRangeBooking", "DateRange", b1 =>
                         {
                             b1.Property<Guid>("BookingId")
                                 .HasColumnType("uniqueidentifier");
 
-                            b1.Property<DateTime>("CheckIn")
-                                .HasColumnType("datetime2")
+                            b1.Property<DateTimeOffset>("CheckIn")
+                                .HasColumnType("datetimeoffset")
                                 .HasColumnName("CheckIn");
 
-                            b1.Property<DateTime>("CheckOut")
-                                .HasColumnType("datetime2")
+                            b1.Property<DateTimeOffset>("CheckOut")
+                                .HasColumnType("datetimeoffset")
                                 .HasColumnName("CheckOut");
 
                             b1.HasKey("BookingId");
@@ -182,17 +187,16 @@ namespace ToDeFerias.Bookings.Infrastructure.Migrations
                                 .HasForeignKey("BookingId");
                         });
 
-                    b.Navigation("DateRange")
-                        .IsRequired();
+                    b.Navigation("DateRange");
 
                     b.Navigation("HouseGuest");
 
                     b.Navigation("Room");
                 });
 
-            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Entities.BookingAggregate.Room", b =>
+            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate.Room", b =>
                 {
-                    b.HasOne("ToDeFerias.Bookings.Domain.Entities.BookingAggregate.RoomType", "Type")
+                    b.HasOne("ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate.RoomType", "Type")
                         .WithMany("Rooms")
                         .HasForeignKey("RoomTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -201,16 +205,16 @@ namespace ToDeFerias.Bookings.Infrastructure.Migrations
                     b.Navigation("Type");
                 });
 
-            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Entities.HouseGuestAggregate.HouseGuest", b =>
+            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate.HouseGuest", b =>
                 {
-                    b.OwnsOne("ToDeFerias.Bookings.Domain.Entities.HouseGuestAggregate.Cpf", "Cpf", b1 =>
+                    b.OwnsOne("ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate.Cpf", "Cpf", b1 =>
                         {
                             b1.Property<Guid>("HouseGuestId")
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<string>("Number")
                                 .IsRequired()
-                                .HasColumnType("VARCHAR(11)")
+                                .HasColumnType("VARCHAR(255)")
                                 .HasColumnName("Cpf");
 
                             b1.HasKey("HouseGuestId");
@@ -221,13 +225,13 @@ namespace ToDeFerias.Bookings.Infrastructure.Migrations
                                 .HasForeignKey("HouseGuestId");
                         });
 
-                    b.OwnsOne("ToDeFerias.Bookings.Domain.Entities.HouseGuestAggregate.DateOfBirth", "DateOfBirth", b1 =>
+                    b.OwnsOne("ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate.DateOfBirth", "DateOfBirth", b1 =>
                         {
                             b1.Property<Guid>("HouseGuestId")
                                 .HasColumnType("uniqueidentifier");
 
-                            b1.Property<DateTime>("Birthday")
-                                .HasColumnType("DATE")
+                            b1.Property<DateTimeOffset>("Birthday")
+                                .HasColumnType("datetimeoffset")
                                 .HasColumnName("DateOfBirth");
 
                             b1.HasKey("HouseGuestId");
@@ -238,14 +242,14 @@ namespace ToDeFerias.Bookings.Infrastructure.Migrations
                                 .HasForeignKey("HouseGuestId");
                         });
 
-                    b.OwnsOne("ToDeFerias.Bookings.Domain.Entities.HouseGuestAggregate.Email", "Email", b1 =>
+                    b.OwnsOne("ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate.Email", "Email", b1 =>
                         {
                             b1.Property<Guid>("HouseGuestId")
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<string>("Address")
                                 .IsRequired()
-                                .HasColumnType("VARCHAR(254)")
+                                .HasColumnType("VARCHAR(255)")
                                 .HasColumnName("Email");
 
                             b1.HasKey("HouseGuestId");
@@ -260,21 +264,20 @@ namespace ToDeFerias.Bookings.Infrastructure.Migrations
 
                     b.Navigation("DateOfBirth");
 
-                    b.Navigation("Email")
-                        .IsRequired();
+                    b.Navigation("Email");
                 });
 
-            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Entities.BookingAggregate.Room", b =>
+            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate.Room", b =>
                 {
                     b.Navigation("Bookings");
                 });
 
-            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Entities.BookingAggregate.RoomType", b =>
+            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate.RoomType", b =>
                 {
                     b.Navigation("Rooms");
                 });
 
-            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Entities.HouseGuestAggregate.HouseGuest", b =>
+            modelBuilder.Entity("ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate.HouseGuest", b =>
                 {
                     b.Navigation("Bookings");
                 });

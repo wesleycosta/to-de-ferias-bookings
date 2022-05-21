@@ -10,7 +10,8 @@ internal sealed class HouseGuestBuilder : BaseBuilderWithAutoFixture<HouseGuest,
     {
         Object = new HouseGuest(id: Guid.NewGuid(),
                                 name: Fixture.Create<string>(),
-                                emailAddress: "username@mail.com");
+                                emailAddress: "username@mail.com",
+                                cpf: "648.790.800-20");
 
         return this;
     }
