@@ -59,7 +59,7 @@ public abstract class MainController : ControllerBase
         if (!IsValid())
             return BadRequestResponse();
 
-        if (result == null)
+        if (result is null)
             return NoContent();
 
         return HttpStatusCodeRespose<T>(_mapper.Map<T>(result), statusCode, url);

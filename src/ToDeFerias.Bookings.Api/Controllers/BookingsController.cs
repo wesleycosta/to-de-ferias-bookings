@@ -30,8 +30,6 @@ public sealed class BookingsController : MainController
     }
 
     [HttpPost]
-    [ProducesResponseType(StatusCodes.Status201Created)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(BookingDto), (int)HttpStatusCode.Created)]
     [ProducesResponseType(typeof(BadRequestResponseDto), (int)HttpStatusCode.BadRequest)]
     public async Task<IActionResult> Create([FromBody] RegisterBookingInputModel inputModel)
@@ -43,8 +41,6 @@ public sealed class BookingsController : MainController
     }
 
     [HttpPatch("{bookingId}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(BookingDto), (int)HttpStatusCode.OK)]
     [ProducesResponseType(typeof(BadRequestResponseDto), (int)HttpStatusCode.BadRequest)]
     public async Task<IActionResult> Update(Guid bookingId, [FromBody] UpdateBookingInputModel inputModel)
@@ -56,13 +52,12 @@ public sealed class BookingsController : MainController
     }
 
     [HttpGet("{bookingId}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(BookingDto), (int)HttpStatusCode.OK)]
     [ProducesResponseType(typeof(BadRequestResponseDto), (int)HttpStatusCode.NotFound)]
     public async Task<IActionResult> GetById(Guid bookingId)
     {
         var booking = await _bookingRepository.GetById(bookingId);
-        if (booking == null)
+        if (booking is null)
             return NotFound();
 
         return Ok(_mapper.Map<BookingDto>(booking));
