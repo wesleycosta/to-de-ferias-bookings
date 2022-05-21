@@ -25,7 +25,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unit-tests", "unit-tests", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "devops", "devops", "{A8703BA9-169B-4CAA-AE2C-2BCBC27D4955}"
 	ProjectSection(SolutionItems) = preProject
-		..\devops\azure-pipelines.yml = ..\devops\azure-pipelines.yml
 		..\devops\Dockerfile = ..\devops\Dockerfile
 	EndProjectSection
 EndProject
