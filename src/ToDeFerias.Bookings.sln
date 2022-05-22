@@ -61,6 +61,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mssql", "mssql", "{72DF34B0
 		..\development\docker\mssql\docker-compose.yml = ..\development\docker\mssql\docker-compose.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{411BBA12-D800-43AA-B4CA-A7040B785246}"
+	ProjectSection(SolutionItems) = preProject
+		..\docs\architecture-diagram.png = ..\docs\architecture-diagram.png
+		..\docs\class-diagram.png = ..\docs\class-diagram.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +171,7 @@ Global
 		{E7D3D87C-2DEB-4AC5-B9E3-325A7FA95B8F} = {BAB329DE-9305-4497-805A-AF8D354A895A}
 		{C02F25D5-6BE1-49BC-811C-940679D24943} = {C9EEFE63-FF5C-4B51-B3B1-0E10EC10F340}
 		{72DF34B0-D9D0-4F59-B617-7F2130F211DF} = {C9EEFE63-FF5C-4B51-B3B1-0E10EC10F340}
+		{411BBA12-D800-43AA-B4CA-A7040B785246} = {B783300E-DE52-4FE7-9D85-A006E9AAE0E9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {15163729-D6F1-4904-9EF2-3BA20C38869F}
