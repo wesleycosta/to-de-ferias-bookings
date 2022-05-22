@@ -58,4 +58,37 @@ public sealed class Booking : Entity, IAggregateRoot
 
     public bool HasDateChanged(DateRangeBooking dateRange) =>
         !DateRange.Equals(dateRange);
+
+    public bool IsItPossibleToCancel() =>
+        Status == BookingStatus.Booked;
+
+    public bool IsItPossibleToCheckIn() =>
+        Status == BookingStatus.Booked;
+
+    public bool IsItPossibleToCheckOut() =>
+        Status == BookingStatus.CheckIn;
+
+    public void CheckIn()
+    {
+        if (!IsItPossibleToCheckIn())
+            throw new DomainException("It is only possible to check in for bookings that have the same status as Booked");
+
+        Status = BookingStatus.CheckIn;
+    }
+
+    public void CheckOut()
+    {
+        if (!IsItPossibleToCheckOut())
+            throw new DomainException("It is only possible to check out for bookings that have the same status as CheckIn");
+
+        Status = BookingStatus.CheckOut;
+    }
+
+    public void Cancel()
+    {
+        if (!IsItPossibleToCancel())
+            throw new DomainException("It is only possible to cancel for bookings that have the same status as Booked");
+
+        Status = BookingStatus.Cancelled;
+    }
 }

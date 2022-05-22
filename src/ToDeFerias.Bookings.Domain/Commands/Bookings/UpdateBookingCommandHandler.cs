@@ -26,7 +26,7 @@ public sealed class UpdateBookingCommandHandler : CommandHandler, IRequestHandle
             return BadCommand();
 
         var commandResult = await UpdateBooking(booking, request.InputModel);
-        return Response(commandResult);
+        return SuccessfulCommand(commandResult);
     }
 
     private async Task<bool> RoomIsAvailable(Booking booking, UpdateBookingInputModel inputModel)

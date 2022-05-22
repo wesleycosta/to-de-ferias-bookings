@@ -19,16 +19,11 @@ internal sealed class BookingRepository : RepositoryBase<Booking>, IBookingRepos
                        .ThenInclude(p => p.Type)
                    .FirstOrDefaultAsync(p => p.Id == id);
 
-    public async Task<Room> GetRoomById(Guid id) =>
-        await Context.Set<Room>()
-                     .Include(p => p.Type)
-                     .FirstOrDefaultAsync(p => p.Id.Equals(id));
-
     public async Task<bool> ItsBooked(Guid roomId, DateRangeBooking dateRangeBooking) =>
         await DbSet.AnyAsync(p => p.RoomId.Equals(roomId) &&
                                   p.DateRange.CheckIn >= dateRangeBooking.CheckIn &&
                                   p.DateRange.CheckOut <= dateRangeBooking.CheckOut &&
-                                  p.Status != BookingStatus.Cancelled);
+                                 p.Status != BookingStatus.Cancelled);
 
     public async Task<bool> ItsBooked(Guid bookingId, Guid roomId, DateTimeOffset checkIn, DateTimeOffset checkOut) =>
         await DbSet.AnyAsync(p => p.Id != bookingId &&
@@ -36,4 +31,27 @@ internal sealed class BookingRepository : RepositoryBase<Booking>, IBookingRepos
                                   p.DateRange.CheckIn >= checkIn &&
                                   p.DateRange.CheckOut <= checkOut &&
                                   p.Status != BookingStatus.Cancelled);
+    public async Task<Room> GetRoomById(Guid id) =>
+        await Context.Set<Room>()
+                     .Include(p => p.Type)
+                     .FirstOrDefaultAsync(p => p.Id.Equals(id));
+
+    public async Task<IReadOnlyList<Booking>> GetDateRange(DateTimeOffset start, DateTimeOffset end) =>
+              await DbSet.Include(p => p.HouseGuest)
+                   .Include(p => p.Room)
+                       .ThenInclude(p => p.Type)
+                   .Where(p => p.DateRange.CheckIn >= start &&
+                               p.DateRange.CheckIn <= end &&
+                               p.Status != BookingStatus.Cancelled)
+                   .ToListAsync();
+    
+    public async Task<IReadOnlyList<Booking>> GetByRoomId(Guid roomId, DateTimeOffset start, DateTimeOffset end) =>
+        await DbSet.Include(p => p.HouseGuest)
+                   .Include(p => p.Room)
+                       .ThenInclude(p => p.Type)
+                   .Where(p => p.RoomId == roomId &&
+                               p.DateRange.CheckIn >= start &&
+                               p.DateRange.CheckIn <= end &&
+                               p.Status != BookingStatus.Cancelled)
+                   .ToListAsync();
 }

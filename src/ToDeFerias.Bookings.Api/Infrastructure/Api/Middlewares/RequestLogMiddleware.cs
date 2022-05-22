@@ -28,6 +28,7 @@ internal sealed class RequestLogMiddleware
         catch (Exception exception)
         {
             _logger.Error(operation, "Request error", exception, traceId);
+            throw;
         }
     }
 

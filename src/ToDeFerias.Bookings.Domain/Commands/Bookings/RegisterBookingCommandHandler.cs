@@ -29,7 +29,7 @@ public sealed class RegisterBookingCommandHandler : CommandHandler, IRequestHand
             return BadCommand();
 
         var commandResult = await SaveBooking(request.InputModel);
-        return Response(commandResult);
+        return SuccessfulCommand(commandResult);
     }
 
     private async Task<bool> RoomIsAvailable(RegisterBookingInputModel inputModel)

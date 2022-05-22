@@ -38,7 +38,7 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : Entity, I
     public virtual async Task<T> GetById(Guid id) =>
         await DbSet.FirstOrDefaultAsync(p => p.Id == id);
 
-    public virtual async Task<IEnumerable<T>> GetAll() =>
+    public virtual async Task<IReadOnlyList<T>> GetAll() =>
         await DbSet.ToListAsync();
 
     public virtual void Dispose() =>

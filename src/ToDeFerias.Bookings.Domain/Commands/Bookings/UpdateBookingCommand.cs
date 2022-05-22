@@ -14,9 +14,7 @@ public sealed class UpdateBookingCommand : Command
         InputModel = inputModel;
     }
 
-    public override bool IsValid()
-    {
-        ValidationResult = new UpdateBookingValidation().Validate(this);
-        return ValidationResult.IsValid;
-    }
+    public override bool IsValid() =>
+        new UpdateBookingValidation().Validate(this)
+                                     .IsValid;
 }

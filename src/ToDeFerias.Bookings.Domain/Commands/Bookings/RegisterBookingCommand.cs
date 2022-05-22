@@ -11,9 +11,7 @@ public sealed class RegisterBookingCommand : Command
     public RegisterBookingCommand(RegisterBookingInputModel inputModel) =>
         InputModel = inputModel;
 
-    public override bool IsValid()
-    {
-        ValidationResult = new RegisterBookingValidation().Validate(this);
-        return ValidationResult.IsValid;
-    }
+    public override bool IsValid() =>
+        new RegisterBookingValidation().Validate(this)
+                                       .IsValid;
 }

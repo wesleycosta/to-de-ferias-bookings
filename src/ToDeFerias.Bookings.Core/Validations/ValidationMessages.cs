@@ -13,4 +13,7 @@ public sealed class ValidationMessages
 
     public static string NotFoundInDatabase(string field) =>
         $"Field {field} was not found in the database";
+
+    public static string TheFieldCannotBeEmpty(string field) =>
+        $"The field {field} cannot be empty";
 }

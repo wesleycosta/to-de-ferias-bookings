@@ -8,5 +8,5 @@ public interface IRepositoryBase<T> : IRepository<T> where T : Entity, IAggregat
     void Update(T entity);
     Task Remove(Guid id);
     Task<T> GetById(Guid id);
-    Task<IEnumerable<T>> GetAll();
+    Task<IReadOnlyList<T>> GetAll();
 }

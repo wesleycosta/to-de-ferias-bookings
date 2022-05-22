@@ -29,6 +29,37 @@ public sealed class BookingsController : MainController
         _bookingRepository = bookingRepository;
     }
 
+    [HttpGet("{bookingId}")]
+    [ProducesResponseType(typeof(BookingDto), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(BadRequestResponseDto), (int)HttpStatusCode.NotFound)]
+    public async Task<IActionResult> GetById(Guid bookingId)
+    {
+        var booking = await _bookingRepository.GetById(bookingId);
+        if (booking is null)
+            return NotFound();
+
+        return Ok(_mapper.Map<BookingDto>(booking));
+    }
+
+    [HttpGet("start/{start}/end/{end}")]
+    [ProducesResponseType(typeof(BookingDto[]), (int)HttpStatusCode.OK)]
+    public async Task<IActionResult> GetDateRange(DateTimeOffset start,
+                                                  DateTimeOffset end)
+    {
+        var bookings = await _bookingRepository.GetDateRange(start, end);
+        return Ok(_mapper.Map<BookingDto[]>(bookings));
+    }
+
+    [HttpGet("room/{roomId}/start/{start}/end/{end}")]
+    [ProducesResponseType(typeof(BookingDto[]), (int)HttpStatusCode.OK)]
+    public async Task<IActionResult> GetByRoomId(Guid roomId,
+                                                 DateTimeOffset start,
+                                                 DateTimeOffset end)
+    {
+        var bookings = await _bookingRepository.GetByRoomId(roomId, start, end);
+        return Ok(_mapper.Map<BookingDto[]>(bookings));
+    }
+
     [HttpPost]
     [ProducesResponseType(typeof(BookingDto), (int)HttpStatusCode.Created)]
     [ProducesResponseType(typeof(BadRequestResponseDto), (int)HttpStatusCode.BadRequest)]
@@ -47,19 +78,40 @@ public sealed class BookingsController : MainController
     {
         var command = new UpdateBookingCommand(bookingId, inputModel);
         var result = await _mediator.SendCommand(command);
-        
+
         return Ok<BookingDto>(_mapper.Map<CommandHandlerResultDto>(result));
     }
 
-    [HttpGet("{bookingId}")]
+    [HttpPatch("{bookingId}/check-in")]
     [ProducesResponseType(typeof(BookingDto), (int)HttpStatusCode.OK)]
-    [ProducesResponseType(typeof(BadRequestResponseDto), (int)HttpStatusCode.NotFound)]
-    public async Task<IActionResult> GetById(Guid bookingId)
+    [ProducesResponseType(typeof(BadRequestResponseDto), (int)HttpStatusCode.BadRequest)]
+    public async Task<IActionResult> CheckIn(Guid bookingId)
     {
-        var booking = await _bookingRepository.GetById(bookingId);
-        if (booking is null)
-            return NotFound();
+        var command = new CheckInCommand(bookingId);
+        var result = await _mediator.SendCommand(command);
 
-        return Ok(_mapper.Map<BookingDto>(booking));
+        return Ok<BookingDto>(_mapper.Map<CommandHandlerResultDto>(result));
+    }
+
+    [HttpPatch("{bookingId}/check-out")]
+    [ProducesResponseType(typeof(BookingDto), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(BadRequestResponseDto), (int)HttpStatusCode.BadRequest)]
+    public async Task<IActionResult> CheckOut(Guid bookingId)
+    {
+        var command = new CheckOutCommand(bookingId);
+        var result = await _mediator.SendCommand(command);
+
+        return Ok<BookingDto>(_mapper.Map<CommandHandlerResultDto>(result));
+    }
+
+    [HttpPatch("{bookingId}/cancel")]
+    [ProducesResponseType(typeof(BookingDto), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(BadRequestResponseDto), (int)HttpStatusCode.BadRequest)]
+    public async Task<IActionResult> Cancel(Guid bookingId)
+    {
+        var command = new CancelBookingCommand(bookingId);
+        var result = await _mediator.SendCommand(command);
+
+        return Ok<BookingDto>(_mapper.Map<CommandHandlerResultDto>(result));
     }
 }

@@ -61,13 +61,13 @@ public abstract class CommandHandler
         };
     }
 
-    public CommandHandlerResult Response(object responseCommand) =>
+    public CommandHandlerResult SuccessfulCommand(object responseCommand) =>
         new()
         {
             ValidationResult = ValidationResult,
             Response = responseCommand
         };
 
-    public static CommandHandlerResult Response(CommandHandlerResult commandHandlerResult) =>
+    public static CommandHandlerResult SuccessfulCommand(CommandHandlerResult commandHandlerResult) =>
         commandHandlerResult;
 }

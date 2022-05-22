@@ -3,6 +3,7 @@ using ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate;
 using ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate;
 
 namespace ToDeFerias.Bookings.Domain.Events.Bookings;
+
 public sealed class BookingDateChangedEvent : Event
 {
     public string HouseGuestName { get; private set; }
