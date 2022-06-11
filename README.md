@@ -23,7 +23,7 @@ Arquitetura construida com preocupações de separação de responsabilidades, s
 
 - **SPA**: Front-end em Angular
 - **API Gateway**: API gateway com Ocelot
-- **Booking**: Microsserviço responsável pelo gerenciamento de reservas e hóspedes
+- **Bookings**: Microsserviço responsável pelo gerenciamento de reservas e hóspedes
 - **Rooms**: Microsserviço responsável pelo gerenciamento de quartos e categorias
 - **Notifications**: Microsserviço responsável pelo envio de notificações aos hóspedes
 
