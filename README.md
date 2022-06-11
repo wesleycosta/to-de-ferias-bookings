@@ -18,7 +18,7 @@ Arquitetura construida com preocupações de separação de responsabilidades, s
 - Repository
 
 <p align="center">
-  <img src="./docs/architecture-diagram.png" />
+  <img src="./docs/architecture.png" />
 </p>
 
 - **SPA**: Front-end em Angular

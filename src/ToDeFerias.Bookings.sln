@@ -63,7 +63,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mssql", "mssql", "{72DF34B0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{411BBA12-D800-43AA-B4CA-A7040B785246}"
 	ProjectSection(SolutionItems) = preProject
-		..\docs\architecture-diagram.png = ..\docs\architecture-diagram.png
+		..\docs\architecture.png = ..\docs\architecture.png
 		..\docs\class-diagram.png = ..\docs\class-diagram.png
 	EndProjectSection
 EndProject
