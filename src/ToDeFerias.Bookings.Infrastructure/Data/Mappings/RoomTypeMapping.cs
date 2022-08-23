@@ -17,12 +17,6 @@ public sealed class RoomTypeMapping : IEntityTypeConfiguration<RoomType>
                .IsRequired()
                .HasColumnName("Name");
 
-        builder.Property(p => p.Created)
-               .HasColumnName("Created");
-
-        builder.Property(p => p.LastUpdated)
-               .HasColumnName("LastUpdated");
-
         builder.ToTable("RoomTypes");
     }
 }

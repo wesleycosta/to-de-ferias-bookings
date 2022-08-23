@@ -34,7 +34,6 @@ public sealed class Booking : Entity, IAggregateRoot
         Adults = adults;
         Children = children;
         Status = BookingStatus.Booked;
-        Created = DateTimeOffset.UtcNow;
     }
 
     public void Update(decimal value,
@@ -47,7 +46,6 @@ public sealed class Booking : Entity, IAggregateRoot
         Adults = adults;
         Children = children;
         DateRange = new(checkIn, checkOut);
-        LastUpdated = DateTimeOffset.UtcNow;
     }
 
     public void SetHouseGuest(HouseGuest houseGuest) =>

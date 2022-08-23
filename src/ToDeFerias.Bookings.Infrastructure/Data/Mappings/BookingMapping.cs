@@ -45,12 +45,6 @@ public sealed class BookingMapping : IEntityTypeConfiguration<Booking>
                .HasConversion(new EnumToStringConverter<BookingStatus>())
                .HasMaxLength(255);
 
-        builder.Property(p => p.Created)
-               .HasColumnName("Created");
-
-        builder.Property(p => p.LastUpdated)
-               .HasColumnName("LastUpdated");
-
         builder.HasOne(p => p.HouseGuest)
                .WithMany(p => p.Bookings)
                .HasForeignKey(c => c.HouseGuestId);

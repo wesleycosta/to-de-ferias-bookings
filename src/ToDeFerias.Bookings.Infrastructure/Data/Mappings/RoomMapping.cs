@@ -17,12 +17,6 @@ public sealed class RoomMapping : IEntityTypeConfiguration<Room>
                .IsRequired()
                .HasColumnName("Number");
 
-        builder.Property(p => p.Created)
-          .HasColumnName("Created");
-
-        builder.Property(p => p.LastUpdated)
-               .HasColumnName("LastUpdated");
-
         builder.HasOne(p => p.Type)
                .WithMany(p => p.Rooms)
                .HasForeignKey(p => p.RoomTypeId);
