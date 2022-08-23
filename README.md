@@ -21,11 +21,11 @@ Arquitetura construida com preocupações de separação de responsabilidades, s
   <img src="./docs/architecture.png" />
 </p>
 
-- **SPA**: Front-end em Angular
-- **API Gateway**: API gateway com Ocelot
-- **Bookings**: Microsserviço responsável pelo gerenciamento de reservas e hóspedes
-- **Rooms**: Microsserviço responsável pelo gerenciamento de quartos e categorias
-- **Notifications**: Microsserviço responsável pelo envio de notificações aos hóspedes
+- **SPA**: Front-end em Angular;
+- **API Gateway**: API gateway com Ocelot;
+- **Bookings**: Microsserviço responsável pelo gerenciamento de reservas e hóspedes;
+- **Rooms**: Microsserviço responsável pelo gerenciamento de quartos e categorias;
+- **Notifications**: Microsserviço responsável pelo envio de notificações.
 
 ## Componentes
 - AutoFixture
