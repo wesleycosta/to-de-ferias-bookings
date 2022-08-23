@@ -1,7 +1,7 @@
 # to-de-ferias-booking
 Microsserviço responsável pelo gerenciamento de reservas e hóspedes.
 
-[![CodeFactor](https://www.codefactor.io/repository/github/wesleycosta/to-de-ferias-booking/badge)](https://www.codefactor.io/repository/github/wesleycosta/to-de-ferias-booking)
+[![CodeFactor](https://www.codefactor.io/repository/github/wesleycosta/to-de-ferias-bookings/badge)](https://www.codefactor.io/repository/github/wesleycosta/to-de-ferias-bookings)
 [![Build Status](https://wlcosta.visualstudio.com/ToDeFeriasBooking/_apis/build/status/to-de-ferias-booking-ci?branchName=main)](https://wlcosta.visualstudio.com/ToDeFeriasBooking/_build/latest?definitionId=7&branchName=main)
 
 ## Arquitetura
