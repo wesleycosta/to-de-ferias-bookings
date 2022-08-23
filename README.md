@@ -1,4 +1,4 @@
-# to-de-ferias-booking
+# to-de-ferias-bookings
 Microsserviço responsável pelo gerenciamento de reservas e hóspedes.
 
 [![CodeFactor](https://www.codefactor.io/repository/github/wesleycosta/to-de-ferias-bookings/badge)](https://www.codefactor.io/repository/github/wesleycosta/to-de-ferias-bookings)
