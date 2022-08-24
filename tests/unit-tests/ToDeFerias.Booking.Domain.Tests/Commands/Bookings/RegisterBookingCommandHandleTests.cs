@@ -1,13 +1,10 @@
-﻿using FluentAssertions;
-using Moq;
-using ToDeFerias.Bookings.Core.Data;
+﻿using ToDeFerias.Bookings.Core.Data;
 using ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate;
 using ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate;
 using ToDeFerias.Bookings.Domain.Commands.Bookings;
 using ToDeFerias.Bookings.Domain.Tests.Builders.Aggregates.BookingAggregate;
 using ToDeFerias.Bookings.Domain.Tests.Builders.Aggregates.HouseGuestAggregate;
 using ToDeFerias.Bookings.Domain.Tests.Builders.Commands;
-using Xunit;
 
 namespace ToDeFerias.Bookings.Domain.Tests.Commands.Bookings;
 
@@ -68,7 +65,7 @@ public sealed class RegisterBookingCommandHandleTests
         booking.Id.Should().NotBeEmpty();
         booking.HouseGuestId.Should().Be(houseGuestId);
         booking.RoomId.Should().Be(roomId);
-        booking.DateRange.Should().Be(new DateRangeBooking(checkIn, checkOut));
+        booking.Period.Should().Be(new DateRangeBooking(checkIn, checkOut));
         booking.Value.Should().Be(value);
         booking.Adults.Should().Be(adults);
         booking.Children.Should().Be(children);
@@ -111,6 +108,7 @@ public sealed class RegisterBookingCommandHandleTests
     private void SetupHouseGuestRepository(Guid houseGuestId)
     {
         var houseGuest = new HouseGuestBuilder().BuildDefault()
+                                                .WithId(houseGuestId)
                                                 .Create();
 
         _houseGuestRepository.Setup(p => p.GetById(houseGuestId))

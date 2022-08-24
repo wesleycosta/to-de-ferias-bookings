@@ -1,4 +1,4 @@
-﻿using AutoFixture;
+﻿using ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate;
 
 namespace ToDeFerias.Bookings.Domain.Tests.Builders;
 

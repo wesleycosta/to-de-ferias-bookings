@@ -7,7 +7,7 @@ public sealed class Booking : Entity, IAggregateRoot
 {
     public HouseGuest HouseGuest { get; private set; }
     public Room Room { get; private set; }
-    public DateRangeBooking DateRange { get; private set; }
+    public DateRangeBooking Period { get; private set; }
     public decimal Value { get; private set; }
     public byte Adults { get; private set; }
     public byte Children { get; private set; }
@@ -29,7 +29,7 @@ public sealed class Booking : Entity, IAggregateRoot
         Id = Guid.NewGuid();
         HouseGuestId = houseGuestId;
         RoomId = roomId;
-        DateRange = new(checkIn, checkOut);
+        Period = new(checkIn, checkOut);
         Value = value;
         Adults = adults;
         Children = children;
@@ -45,17 +45,23 @@ public sealed class Booking : Entity, IAggregateRoot
         Value = value;
         Adults = adults;
         Children = children;
-        DateRange = new(checkIn, checkOut);
+        Period = new(checkIn, checkOut);
     }
 
-    public void SetHouseGuest(HouseGuest houseGuest) =>
+    public void SetHouseGuest(HouseGuest houseGuest)
+    {
+        HouseGuestId = houseGuest.Id;
         HouseGuest = houseGuest;
+    }
 
-    public void SetHouseGuest(Room room) =>
+    public void SetRoom(Room room)
+    {
+        RoomId = room.Id;
         Room = room;
+    }
 
-    public bool HasDateChanged(DateRangeBooking dateRange) =>
-        !DateRange.Equals(dateRange);
+    public bool HasDateChanged(DateRangeBooking period) =>
+        !Period.Equals(period);
 
     public bool IsItPossibleToCancel() =>
         Status == BookingStatus.Booked;

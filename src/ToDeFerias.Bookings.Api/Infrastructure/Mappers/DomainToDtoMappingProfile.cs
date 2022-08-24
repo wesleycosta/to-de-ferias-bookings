@@ -16,9 +16,9 @@ public sealed class DomainToDtoMappingProfile : Profile
             .ForMember(dest => dest.Status,
                        opt => opt.MapFrom(src => src.Status.ToString()))
             .ForMember(dest => dest.CheckIn,
-                       opt => opt.MapFrom(src => src.DateRange.CheckIn))
+                       opt => opt.MapFrom(src => src.Period.CheckIn))
             .ForMember(dest => dest.CheckOut,
-                       opt => opt.MapFrom(src => src.DateRange.CheckOut));
+                       opt => opt.MapFrom(src => src.Period.CheckOut));
 
         CreateMap<HouseGuest, HouseGuestDto>()
             .ForMember(dest => dest.Email,

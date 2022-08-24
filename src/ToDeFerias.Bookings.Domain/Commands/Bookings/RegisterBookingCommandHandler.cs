@@ -58,14 +58,14 @@ public sealed class RegisterBookingCommandHandler : CommandHandler, IRequestHand
         var booking = AddBooking(inputModel);
         var @event = new RegisteredBookingEvent(houseGuest,
                                                 room,
-                                                booking.DateRange,
+                                                booking.Period,
                                                 booking.Value,
                                                 booking.Adults,
                                                 booking.Children);
 
         booking.AddEvent(@event);
         booking.SetHouseGuest(houseGuest);
-        booking.SetHouseGuest(room);
+        booking.SetRoom(room);
 
         return await SaveData(_bookingRepository.UnitOfWork, booking);
     }

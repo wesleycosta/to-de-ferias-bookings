@@ -1,5 +1,4 @@
-﻿using AutoFixture;
-using ToDeFerias.Bookings.Domain.Inputs.Bookings;
+﻿using ToDeFerias.Bookings.Domain.Inputs.Bookings;
 
 namespace ToDeFerias.Bookings.Domain.Tests.Builders.Commands;
 

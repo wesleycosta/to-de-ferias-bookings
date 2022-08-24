@@ -21,15 +21,15 @@ internal sealed class BookingRepository : RepositoryBase<Booking>, IBookingRepos
 
     public async Task<bool> ItsBooked(Guid roomId, DateRangeBooking dateRangeBooking) =>
         await DbSet.AnyAsync(p => p.RoomId.Equals(roomId) &&
-                                  p.DateRange.CheckIn >= dateRangeBooking.CheckIn &&
-                                  p.DateRange.CheckOut <= dateRangeBooking.CheckOut &&
+                                  p.Period.CheckIn >= dateRangeBooking.CheckIn &&
+                                  p.Period.CheckOut <= dateRangeBooking.CheckOut &&
                                  p.Status != BookingStatus.Cancelled);
 
     public async Task<bool> ItsBooked(Guid bookingId, Guid roomId, DateTimeOffset checkIn, DateTimeOffset checkOut) =>
         await DbSet.AnyAsync(p => p.Id != bookingId &&
                                   p.RoomId.Equals(roomId) &&
-                                  p.DateRange.CheckIn >= checkIn &&
-                                  p.DateRange.CheckOut <= checkOut &&
+                                  p.Period.CheckIn >= checkIn &&
+                                  p.Period.CheckOut <= checkOut &&
                                   p.Status != BookingStatus.Cancelled);
     public async Task<Room> GetRoomById(Guid id) =>
         await Context.Set<Room>()
@@ -40,8 +40,8 @@ internal sealed class BookingRepository : RepositoryBase<Booking>, IBookingRepos
               await DbSet.Include(p => p.HouseGuest)
                    .Include(p => p.Room)
                        .ThenInclude(p => p.Type)
-                   .Where(p => p.DateRange.CheckIn >= start &&
-                               p.DateRange.CheckIn <= end &&
+                   .Where(p => p.Period.CheckIn >= start &&
+                               p.Period.CheckIn <= end &&
                                p.Status != BookingStatus.Cancelled)
                    .ToListAsync();
     
@@ -50,8 +50,8 @@ internal sealed class BookingRepository : RepositoryBase<Booking>, IBookingRepos
                    .Include(p => p.Room)
                        .ThenInclude(p => p.Type)
                    .Where(p => p.RoomId == roomId &&
-                               p.DateRange.CheckIn >= start &&
-                               p.DateRange.CheckIn <= end &&
+                               p.Period.CheckIn >= start &&
+                               p.Period.CheckIn <= end &&
                                p.Status != BookingStatus.Cancelled)
                    .ToListAsync();
 }

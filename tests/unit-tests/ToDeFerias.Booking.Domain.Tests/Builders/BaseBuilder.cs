@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ToDeFerias.Bookings.Domain.Tests.Builders;
+﻿namespace ToDeFerias.Bookings.Domain.Tests.Builders;
 
 internal abstract class BaseBuilder<TObject, TBuilder> where TBuilder : class, new()
 {

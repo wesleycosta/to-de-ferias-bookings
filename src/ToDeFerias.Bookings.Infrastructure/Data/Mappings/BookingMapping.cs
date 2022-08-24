@@ -14,7 +14,7 @@ public sealed class BookingMapping : IEntityTypeConfiguration<Booking>
         builder.Property(p => p.Id)
                .HasColumnName("Id");
 
-        builder.OwnsOne(p => p.DateRange,
+        builder.OwnsOne(p => p.Period,
                         dateRange =>
                         {
                             dateRange.Property(c => c.CheckIn)

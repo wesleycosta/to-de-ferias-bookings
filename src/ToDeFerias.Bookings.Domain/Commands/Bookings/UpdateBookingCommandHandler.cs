@@ -43,7 +43,7 @@ public sealed class UpdateBookingCommandHandler : CommandHandler, IRequestHandle
 
         booking.AddEvent(new BookingDateChangedEvent(booking.HouseGuest,
                                                      booking.Room,
-                                                     booking.DateRange,
+                                                     booking.Period,
                                                      dateRange));
         return true;
     }
