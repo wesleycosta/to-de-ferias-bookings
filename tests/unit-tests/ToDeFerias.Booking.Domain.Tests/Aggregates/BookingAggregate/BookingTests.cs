@@ -99,7 +99,8 @@ public sealed class BookingTests
 
     [Theory]
     [MemberData(nameof(GetTestScenariosForHasDateChanged))]
-    public void HasDateChanged_Should_ReturnTrue_When_PeriodChanges(DateTimeOffset checkInChanged, DateTimeOffset checkOutChanged)
+    public void HasDateChanged_Should_ReturnTrue_When_PeriodChanges(DateTimeOffset checkInChanged, 
+                                                                    DateTimeOffset checkOutChanged)
     {
         // arrange
         var checkIn = new DateTimeOffset(new DateTime(2022, 01, 01), TimeSpan.Zero);
@@ -121,6 +122,31 @@ public sealed class BookingTests
 
         // assert
         result.Should().BeTrue();
+    }
+
+    [Fact]
+    public void HasDateChanged_Should_ReturnFalse_When_PeriodHasNotChanged()
+    {
+        // arrange
+        var checkIn = new DateTimeOffset(new DateTime(2022, 01, 01), TimeSpan.Zero);
+        var checkOut = new DateTimeOffset(new DateTime(2022, 01, 02), TimeSpan.Zero);
+
+        var sut = new Booking(Guid.NewGuid(),
+                              Guid.NewGuid(),
+                              checkIn,
+                              checkOut,
+                              value: 100,
+                              adults: 2,
+                              children: 1);
+
+        var periodChanged = new DateRangeBooking(checkIn,
+                                                 checkOut);
+
+        // act
+        var result = sut.HasDateChanged(periodChanged);
+
+        // assert
+        result.Should().BeFalse();
     }
 
     public static IEnumerable<object[]> GetTestScenariosForHasDateChanged()
