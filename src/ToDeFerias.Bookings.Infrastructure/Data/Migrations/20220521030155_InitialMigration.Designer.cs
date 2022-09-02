@@ -11,7 +11,7 @@ using ToDeFerias.Bookings.Infrastructure.Context;
 
 namespace ToDeFerias.Bookings.Infrastructure.Migrations
 {
-    [DbContext(typeof(BookingContext))]
+    [DbContext(typeof(BookingsContext))]
     [Migration("20220521030155_InitialMigration")]
     partial class InitialMigration
     {

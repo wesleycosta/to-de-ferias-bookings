@@ -10,8 +10,8 @@ using ToDeFerias.Bookings.Infrastructure.Context;
 
 namespace ToDeFerias.Bookings.Infrastructure.Migrations
 {
-    [DbContext(typeof(BookingContext))]
-    partial class BookingContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(BookingsContext))]
+    partial class bookingsContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

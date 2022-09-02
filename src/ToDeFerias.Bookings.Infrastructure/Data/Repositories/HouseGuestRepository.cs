@@ -7,7 +7,7 @@ namespace ToDeFerias.Bookings.Infrastructure.Data.Repositories;
 
 internal sealed class HouseGuestRepository : RepositoryBase<HouseGuest>, IHouseGuestRepository
 {
-    public HouseGuestRepository(BookingContext context,
+    public HouseGuestRepository(BookingsContext context,
                                 IUnitOfWork unitOfWork) : base(context, unitOfWork)
     {
     }

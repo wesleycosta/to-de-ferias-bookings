@@ -19,7 +19,7 @@ public static class InfraConfigModule
 {
     public static IServiceCollection AddInfraConfiguration(this IServiceCollection services, IConfiguration configuration) =>
        services.AddLogger(configuration)
-               .AddBookingContext(configuration)
+               .AddContext(configuration)
                .AddMediator()
                .AddRepositories();
 
@@ -29,9 +29,9 @@ public static class InfraConfigModule
         return services.AddScoped<IMediatorHandler, MediatorHandler>();
     }
 
-    private static IServiceCollection AddBookingContext(this IServiceCollection services, IConfiguration configuration) =>
-        services.AddDbContext<BookingContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")))
-                .AddScoped<BookingContext>();
+    private static IServiceCollection AddContext(this IServiceCollection services, IConfiguration configuration) =>
+        services.AddDbContext<BookingsContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")))
+                .AddScoped<BookingsContext>();
 
     private static IServiceCollection AddRepositories(this IServiceCollection services) =>
         services.AddScoped<IUnitOfWork, UnitOfWork>()
@@ -47,7 +47,7 @@ public static class InfraConfigModule
             logger.Information("Startup", "Applying migrations");
 
             using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
-            var context = serviceScope.ServiceProvider.GetService<BookingContext>();
+            var context = serviceScope.ServiceProvider.GetService<BookingsContext>();
 
             var pendingMigrations = context.Database.GetPendingMigrations();
             LogMigrations(logger, pendingMigrations);

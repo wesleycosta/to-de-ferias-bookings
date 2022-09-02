@@ -8,7 +8,7 @@ namespace ToDeFerias.Bookings.Infrastructure.Data.Repositories;
 
 internal sealed class BookingRepository : RepositoryBase<Booking>, IBookingRepository
 {
-    public BookingRepository(BookingContext context,
+    public BookingRepository(BookingsContext context,
                              IUnitOfWork unitOfWork) : base(context, unitOfWork)
     {
     }

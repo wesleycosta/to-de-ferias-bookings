@@ -5,10 +5,10 @@ namespace ToDeFerias.Bookings.Infrastructure.Data.Repositories;
 
 internal sealed class UnitOfWork : IUnitOfWork
 {
-    private readonly BookingContext _context;
+    private readonly BookingsContext _context;
 
-    public UnitOfWork(BookingContext bookingContext) =>
-        _context = bookingContext;
+    public UnitOfWork(BookingsContext bookingsContext) =>
+        _context = bookingsContext;
 
     public async Task<bool> Commit() =>
         await _context.Commit();

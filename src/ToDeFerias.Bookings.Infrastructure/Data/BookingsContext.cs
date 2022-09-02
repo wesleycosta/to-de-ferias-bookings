@@ -8,11 +8,11 @@ using ToDeFerias.Bookings.Infrastructure.Extensions;
 
 namespace ToDeFerias.Bookings.Infrastructure.Context;
 
-public sealed class BookingContext : DbContext, IUnitOfWork
+public sealed class BookingsContext : DbContext, IUnitOfWork
 {
     private readonly IMediatorHandler _mediatorHandler;
 
-    public BookingContext(DbContextOptions<BookingContext> options,
+    public BookingsContext(DbContextOptions<BookingsContext> options,
                           IMediatorHandler mediatorHandler) : base(options)
     {
         _mediatorHandler = mediatorHandler;

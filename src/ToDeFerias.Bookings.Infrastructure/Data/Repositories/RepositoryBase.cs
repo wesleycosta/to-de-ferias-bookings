@@ -9,10 +9,10 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : Entity, I
 {
     public IUnitOfWork UnitOfWork { get; }
 
-    protected readonly BookingContext Context;
+    protected readonly BookingsContext Context;
     protected readonly DbSet<T> DbSet;
 
-    protected RepositoryBase(BookingContext context,
+    protected RepositoryBase(BookingsContext context,
                              IUnitOfWork unitOfWork)
     {
         Context = context;
@@ -38,7 +38,7 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : Entity, I
     public virtual async Task<T> GetById(Guid id) =>
         await DbSet.FirstOrDefaultAsync(p => p.Id == id);
 
-    public virtual async Task<IReadOnlyList<T>> GetAll() =>
+    public virtual async Task<IEnumerable<T>> GetAll() =>
         await DbSet.ToListAsync();
 
     public virtual void Dispose() =>
