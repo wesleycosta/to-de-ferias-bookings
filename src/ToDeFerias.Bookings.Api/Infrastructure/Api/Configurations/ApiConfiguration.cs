@@ -4,8 +4,8 @@ using ToDeFerias.Bookings.Api.Infrastructure.Api.Logger;
 using ToDeFerias.Bookings.Api.Infrastructure.Mappers;
 using ToDeFerias.Bookings.Api.Infrastructure.Notifications;
 using ToDeFerias.Bookings.Core.Logger;
+using ToDeFerias.Bookings.CrossCutting.IoC;
 using ToDeFerias.Bookings.Domain;
-using ToDeFerias.Bookings.Infrastructure;
 
 namespace ToDeFerias.Bookings.Api.Infrastructure.Api.Configurations;
 

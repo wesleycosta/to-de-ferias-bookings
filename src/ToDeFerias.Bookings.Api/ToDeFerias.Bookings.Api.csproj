@@ -20,6 +20,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\ToDeFerias.Bookings.Core\ToDeFerias.Bookings.Core.csproj" />
+		<ProjectReference Include="..\ToDeFerias.Bookings.CrossCutting.IoC\ToDeFerias.Bookings.CrossCutting.IoC.csproj" />
 		<ProjectReference Include="..\ToDeFerias.Bookings.Domain\ToDeFerias.Bookings.Domain.csproj" />
 		<ProjectReference Include="..\ToDeFerias.Bookings.Infrastructure\ToDeFerias.Bookings.Infrastructure.csproj" />
 	</ItemGroup>

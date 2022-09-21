@@ -1,5 +1,5 @@
 using ToDeFerias.Bookings.Api.Infrastructure.Api.Configurations;
-using ToDeFerias.Bookings.Infrastructure;
+using ToDeFerias.Bookings.CrossCutting.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
 

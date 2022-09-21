@@ -13,7 +13,7 @@ using ToDeFerias.Bookings.Infrastructure.Data.Repositories;
 using ToDeFerias.Bookings.Infrastructure.Logger;
 using ToDeFerias.Bookings.Infrastructure.Mediator;
 
-namespace ToDeFerias.Bookings.Infrastructure;
+namespace ToDeFerias.Bookings.CrossCutting.IoC;
 
 public static class InfraConfigModule
 {
@@ -30,8 +30,7 @@ public static class InfraConfigModule
     }
 
     private static IServiceCollection AddContext(this IServiceCollection services, IConfiguration configuration) =>
-        services.AddDbContext<BookingsContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")))
-                .AddScoped<BookingsContext>();
+        services.AddDbContext<BookingsContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
     private static IServiceCollection AddRepositories(this IServiceCollection services) =>
         services.AddScoped<IUnitOfWork, UnitOfWork>()

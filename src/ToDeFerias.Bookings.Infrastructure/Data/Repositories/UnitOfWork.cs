@@ -3,7 +3,7 @@ using ToDeFerias.Bookings.Infrastructure.Context;
 
 namespace ToDeFerias.Bookings.Infrastructure.Data.Repositories;
 
-internal sealed class UnitOfWork : IUnitOfWork
+public sealed class UnitOfWork : IUnitOfWork
 {
     private readonly BookingsContext _context;
 

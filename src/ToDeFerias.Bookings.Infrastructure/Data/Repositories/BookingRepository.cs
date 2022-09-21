@@ -6,7 +6,7 @@ using ToDeFerias.Bookings.Infrastructure.Repositories;
 
 namespace ToDeFerias.Bookings.Infrastructure.Data.Repositories;
 
-internal sealed class BookingRepository : RepositoryBase<Booking>, IBookingRepository
+public sealed class BookingRepository : RepositoryBase<Booking>, IBookingRepository
 {
     public BookingRepository(BookingsContext context,
                              IUnitOfWork unitOfWork) : base(context, unitOfWork)

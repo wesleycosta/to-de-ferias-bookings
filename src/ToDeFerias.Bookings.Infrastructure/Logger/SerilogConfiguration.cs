@@ -5,9 +5,9 @@ using Serilog.Sinks.Elasticsearch;
 
 namespace ToDeFerias.Bookings.Infrastructure.Logger;
 
-internal static class SerilogConfiguration
+public static class SerilogConfiguration
 {
-    internal static IServiceCollection AddSerilog(this IServiceCollection services,
+    public static IServiceCollection AddSerilog(this IServiceCollection services,
                                                   IConfiguration configuration)
     {
         var elasticsearchUri = new Uri(configuration["Elasticsearch:Uri"]);

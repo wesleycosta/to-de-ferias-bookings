@@ -10,5 +10,5 @@ public sealed class CheckInCommand : Command
 
     public override bool IsValid() =>
         new CheckInCommandValidation().Validate(this)
-                                 .IsValid;
+                                      .IsValid;
 }
