@@ -29,8 +29,9 @@ public static class InfraConfigModule
         return services.AddScoped<IMediatorHandler, MediatorHandler>();
     }
 
-    private static IServiceCollection AddContext(this IServiceCollection services, IConfiguration configuration) =>
-        services.AddDbContext<BookingsContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+    private static IServiceCollection AddContext(this IServiceCollection services, IConfiguration _) =>
+       //services.AddDbContext<BookingsContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+       services.AddDbContext<BookingsContext>(options => options.UseInMemoryDatabase("to-de-ferias-booking"));
 
     private static IServiceCollection AddRepositories(this IServiceCollection services) =>
         services.AddScoped<IUnitOfWork, UnitOfWork>()
@@ -39,6 +40,8 @@ public static class InfraConfigModule
 
     public static IApplicationBuilder ApplyMigrate(this IApplicationBuilder app)
     {
+        return app;
+
         var logger = app.ApplicationServices.GetService<ILoggerService>();
 
         try
