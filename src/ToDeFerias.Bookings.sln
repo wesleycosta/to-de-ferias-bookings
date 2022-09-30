@@ -64,10 +64,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{411BBA12-D800-43AA-B4CA-A7040B785246}"
 	ProjectSection(SolutionItems) = preProject
 		..\docs\architecture.png = ..\docs\architecture.png
+		..\docs\api-docs.png = ..\docs\api-docs.png
 		..\docs\class-diagram.png = ..\docs\class-diagram.png
+		..\docs\solution.png = ..\docs\solution.png
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDeFerias.Bookings.CrossCutting.IoC", "ToDeFerias.Bookings.CrossCutting.IoC\ToDeFerias.Bookings.CrossCutting.IoC.csproj", "{C1C11B13-B273-4854-BF2A-E7313AB45ADB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDeFerias.Bookings.CrossCutting.IoC", "ToDeFerias.Bookings.CrossCutting.IoC\ToDeFerias.Bookings.CrossCutting.IoC.csproj", "{C1C11B13-B273-4854-BF2A-E7313AB45ADB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

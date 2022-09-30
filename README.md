@@ -44,3 +44,13 @@ Arquitetura construida com preocupações de separação de responsabilidades, s
 <p align="center">
   <img src="./docs/class-diagram.png" />
 </p>
+
+## Estrutura do projeto
+<p>
+  <img src="./docs/solution.png" />
+</p>
+
+## Documentação da API
+<p align="center">
+  <img src="./docs/api-docs.png" />
+</p>
