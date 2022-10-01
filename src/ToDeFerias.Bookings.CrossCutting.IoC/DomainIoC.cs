@@ -6,7 +6,7 @@ using ToDeFerias.Bookings.Domain.Events.Bookings;
 
 namespace ToDeFerias.Bookings.Domain;
 
-public static class DomainConfigModule
+public static class DomainIoC
 {
     public static IServiceCollection AddDomainConfiguration(this IServiceCollection services) =>
         services.AddCommands()

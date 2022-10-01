@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using ToDeFerias.Bookings.Core.Logger;
 using ToDeFerias.Bookings.Core.Messages;
 using ToDeFerias.Bookings.Core.Validations;
 using ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate;
@@ -56,7 +57,8 @@ public sealed class RegisterBookingCommandHandler : CommandHandler, IRequestHand
             return BadCommand(ValidationMessages.NotFoundInDatabase("RoomId"));
 
         var booking = AddBooking(inputModel);
-        var @event = new RegisteredBookingEvent(houseGuest,
+        var @event = new RegisteredBookingEvent(booking.Id,
+                                                houseGuest,
                                                 room,
                                                 booking.Period,
                                                 booking.Value,

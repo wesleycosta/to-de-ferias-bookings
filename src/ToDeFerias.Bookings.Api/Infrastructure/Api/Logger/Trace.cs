@@ -2,11 +2,11 @@
 
 namespace ToDeFerias.Bookings.Api.Infrastructure.Api.Logger;
 
-public sealed class TraceLogger : ITraceLogger
+public sealed class Trace : ITrace
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public TraceLogger(IHttpContextAccessor httpContextAccessor) =>
+    public Trace(IHttpContextAccessor httpContextAccessor) =>
         _httpContextAccessor = httpContextAccessor;
 
     public Guid GetTraceId()

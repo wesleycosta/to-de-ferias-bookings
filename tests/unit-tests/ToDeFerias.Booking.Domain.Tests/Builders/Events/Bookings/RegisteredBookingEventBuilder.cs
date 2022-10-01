@@ -9,10 +9,8 @@ internal sealed class RegisteredBookingEventBuilder : BaseBuilderWithAutoFixture
 {
     public override RegisteredBookingEventBuilder BuildDefault()
     {
-
         var houseGuest = new HouseGuestBuilder().BuildDefault()
                                                 .Create();
-
 
         var room = new RoomBuilder().BuildDefault()
                                     .Create();
@@ -21,7 +19,8 @@ internal sealed class RegisteredBookingEventBuilder : BaseBuilderWithAutoFixture
         var checkOut = new DateTimeOffset(new DateTime(2022, 01, 02), TimeSpan.Zero);
         var dateRangeBooking = new DateRangeBooking(checkIn, checkOut);
 
-        Object = new RegisteredBookingEvent(houseGuest,
+        Object = new RegisteredBookingEvent(Guid.NewGuid(),
+                                            houseGuest,
                                             room,
                                             dateRangeBooking,
                                             Fixture.Create<decimal>(),

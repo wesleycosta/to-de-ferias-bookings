@@ -2,6 +2,7 @@
 using ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate;
 using ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate;
 using ToDeFerias.Bookings.Domain.Commands.Bookings;
+using ToDeFerias.Bookings.Domain.Events.Bookings;
 using ToDeFerias.Bookings.Domain.Tests.Builders.Aggregates.BookingAggregate;
 using ToDeFerias.Bookings.Domain.Tests.Builders.Aggregates.HouseGuestAggregate;
 using ToDeFerias.Bookings.Domain.Tests.Builders.Commands;
@@ -72,7 +73,7 @@ public sealed class RegisterBookingCommandHandleTests
         booking.Status.Should().Be(BookingStatus.Booked);
 
         booking.DomainEvents.Should().HaveCount(1);
-        booking.ContainsEvent("RegisteredBookingEvent").Should().BeTrue();
+        booking.DomainEvents.FirstOrDefault().Should().BeOfType(typeof(RegisteredBookingEvent));
 
         _bookingRepository.Verify(p => p.ItsBooked(roomId, It.IsAny<DateRangeBooking>()), Times.Once);
         _bookingRepository.Verify(p => p.GetRoomById(roomId), Times.Once);

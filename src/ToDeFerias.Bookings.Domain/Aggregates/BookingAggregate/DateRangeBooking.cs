@@ -36,7 +36,7 @@ public sealed class DateRangeBooking : IValueObject
     }
 
     public override string ToString() =>
-        $"{CheckIn.Date} of {CheckOut.Date}";
+        $"{CheckIn.Date:dd/MM/yyyy} of {CheckOut.Date:dd/MM/yyyy}";
 
     public override int GetHashCode() =>
           (GetType().GetHashCode() * 907) + CheckIn.GetHashCode() + CheckOut.GetHashCode();

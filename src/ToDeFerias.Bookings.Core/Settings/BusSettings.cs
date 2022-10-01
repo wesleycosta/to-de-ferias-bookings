@@ -3,5 +3,5 @@
 public sealed class BusSettings
 {
     public string ConnectionString { get; set; }
-    public string NotificationsQueueName { get; set; }
+    public QueueSettings Notifications { get; set; }
 }

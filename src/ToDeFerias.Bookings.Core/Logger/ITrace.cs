@@ -1,6 +1,6 @@
 ﻿namespace ToDeFerias.Bookings.Core.Logger;
 
-public interface ITraceLogger
+public interface ITrace
 {
     Guid GetTraceId();
 }

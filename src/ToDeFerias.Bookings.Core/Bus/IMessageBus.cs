@@ -1,8 +1,9 @@
 ﻿using ToDeFerias.Bookings.Core.Messages;
+using ToDeFerias.Bookings.Core.Settings;
 
 namespace ToDeFerias.Bookings.Core.Bus;
 
 public interface IMessageBus
 {
-    Task Publish<TEvent>(TEvent @event, string queue) where TEvent : Event;
+    void Publish(EventWrapper @event, QueueSettings queueSettings);
 }

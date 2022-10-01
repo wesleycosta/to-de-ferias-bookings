@@ -30,7 +30,7 @@ internal static class ApiConfiguration
          services.AddScoped<INotifier, Notifier>();
 
     private static IServiceCollection AddTraceLogger(this IServiceCollection services) =>
-        services.AddSingleton<ITraceLogger, TraceLogger>();
+        services.AddSingleton<ITrace, Trace>();
 
     public static IServiceCollection AddAppConfiguration(this IServiceCollection services) =>
       services.AddAutoMapper(config =>

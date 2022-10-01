@@ -17,7 +17,7 @@ using ToDeFerias.Bookings.Infrastructure.Mediator;
 
 namespace ToDeFerias.Bookings.CrossCutting.IoC;
 
-public static class InfraConfigModule
+public static class InfraIoC
 {
     public static IServiceCollection AddInfraConfiguration(this IServiceCollection services, IConfiguration configuration) =>
        services.AddLogger(configuration)
@@ -43,6 +43,7 @@ public static class InfraConfigModule
     public static IApplicationBuilder ApplyMigrate(this IApplicationBuilder app)
     {
         var logger = app.ApplicationServices.GetService<ILoggerService>();
+        ArgumentNullException.ThrowIfNull(logger);
 
         try
         {
@@ -51,6 +52,7 @@ public static class InfraConfigModule
             using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
             var context = serviceScope.ServiceProvider.GetService<BookingsContext>();
 
+            ArgumentNullException.ThrowIfNull(context);
             var pendingMigrations = context.Database.GetPendingMigrations();
             LogMigrations(logger, pendingMigrations);
 
@@ -81,6 +83,7 @@ public static class InfraConfigModule
     public static IApplicationBuilder AddStartupAndShutdownLog(this IApplicationBuilder app)
     {
         var logger = app.ApplicationServices.GetService<ILoggerService>();
+        ArgumentNullException.ThrowIfNull(logger);
         logger.Information("Startup", "Application started");
 
         AppDomain.CurrentDomain.ProcessExit += (s, e) =>
