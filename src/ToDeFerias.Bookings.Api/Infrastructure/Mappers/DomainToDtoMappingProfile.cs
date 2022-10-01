@@ -12,13 +12,21 @@ public sealed class DomainToDtoMappingProfile : Profile
     {
         CreateMap<CommandHandlerResult, CommandHandlerResultDto>();
 
-        CreateMap<Booking, BookingDto>()
+        CreateMap<Booking, BookingFullDto>()
             .ForMember(dest => dest.Status,
                        opt => opt.MapFrom(src => src.Status.ToString()))
             .ForMember(dest => dest.CheckIn,
                        opt => opt.MapFrom(src => src.Period.CheckIn))
             .ForMember(dest => dest.CheckOut,
                        opt => opt.MapFrom(src => src.Period.CheckOut));
+
+        CreateMap<Booking, BookingDto>()
+            .ForMember(dest => dest.Status,
+                 opt => opt.MapFrom(src => src.Status.ToString()))
+            .ForMember(dest => dest.CheckIn,
+                 opt => opt.MapFrom(src => src.Period.CheckIn))
+            .ForMember(dest => dest.CheckOut,
+                 opt => opt.MapFrom(src => src.Period.CheckOut));
 
         CreateMap<HouseGuest, HouseGuestDto>()
             .ForMember(dest => dest.Email,

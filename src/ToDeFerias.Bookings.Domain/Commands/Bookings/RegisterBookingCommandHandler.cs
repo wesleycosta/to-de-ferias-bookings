@@ -64,8 +64,6 @@ public sealed class RegisterBookingCommandHandler : CommandHandler, IRequestHand
                                                 booking.Children);
 
         booking.AddEvent(@event);
-        booking.SetHouseGuest(houseGuest);
-        booking.SetRoom(room);
 
         return await SaveData(_bookingRepository.UnitOfWork, booking);
     }

@@ -12,14 +12,14 @@ using ToDeFerias.Bookings.Infrastructure.Context;
 namespace ToDeFerias.Bookings.Infrastructure.Migrations
 {
     [DbContext(typeof(BookingsContext))]
-    [Migration("20220521030155_InitialMigration")]
+    [Migration("20221001025141_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.5")
+                .HasAnnotation("ProductVersion", "6.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -39,16 +39,8 @@ namespace ToDeFerias.Bookings.Infrastructure.Migrations
                         .HasColumnType("tinyint")
                         .HasColumnName("Children");
 
-                    b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("datetimeoffset")
-                        .HasColumnName("Created");
-
                     b.Property<Guid>("HouseGuestId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTimeOffset?>("LastUpdated")
-                        .HasColumnType("datetimeoffset")
-                        .HasColumnName("LastUpdated");
 
                     b.Property<Guid>("RoomId")
                         .HasColumnType("uniqueidentifier");
@@ -80,14 +72,6 @@ namespace ToDeFerias.Bookings.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("Id");
 
-                    b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("datetimeoffset")
-                        .HasColumnName("Created");
-
-                    b.Property<DateTimeOffset?>("LastUpdated")
-                        .HasColumnType("datetimeoffset")
-                        .HasColumnName("LastUpdated");
-
                     b.Property<byte>("Number")
                         .HasColumnType("tinyint")
                         .HasColumnName("Number");
@@ -109,14 +93,6 @@ namespace ToDeFerias.Bookings.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("Id");
 
-                    b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("datetimeoffset")
-                        .HasColumnName("Created");
-
-                    b.Property<DateTimeOffset?>("LastUpdated")
-                        .HasColumnType("datetimeoffset")
-                        .HasColumnName("LastUpdated");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("VARCHAR(255)")
@@ -133,14 +109,6 @@ namespace ToDeFerias.Bookings.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("Id");
-
-                    b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("datetimeoffset")
-                        .HasColumnName("Created");
-
-                    b.Property<DateTimeOffset?>("LastUpdated")
-                        .HasColumnType("datetimeoffset")
-                        .HasColumnName("LastUpdated");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -166,7 +134,7 @@ namespace ToDeFerias.Bookings.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate.DateRangeBooking", "DateRange", b1 =>
+                    b.OwnsOne("ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate.DateRangeBooking", "Period", b1 =>
                         {
                             b1.Property<Guid>("BookingId")
                                 .HasColumnType("uniqueidentifier");
@@ -187,9 +155,9 @@ namespace ToDeFerias.Bookings.Infrastructure.Migrations
                                 .HasForeignKey("BookingId");
                         });
 
-                    b.Navigation("DateRange");
-
                     b.Navigation("HouseGuest");
+
+                    b.Navigation("Period");
 
                     b.Navigation("Room");
                 });

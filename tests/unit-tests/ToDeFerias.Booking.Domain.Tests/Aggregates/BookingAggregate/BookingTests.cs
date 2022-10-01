@@ -63,40 +63,6 @@ public sealed class BookingTests
         sut.Period.CheckOut.Should().Be(checkOut);
     }
 
-    [Fact]
-    public void SetHouseGuest_Should_SetHouseGuestProperty_When_ItIsInvoked()
-    {
-        // arrange
-        var sut = new Booking();
-        var houseGuest = new HouseGuestBuilder().BuildDefault()
-                                                .Create();
-
-        // act
-        sut.SetHouseGuest(houseGuest);
-
-        // assert
-        sut.HouseGuest.Should().NotBeNull();
-        sut.HouseGuestId.Should().Be(houseGuest.Id);
-        sut.HouseGuest.Should().Be(houseGuest);
-    }
-
-    [Fact]
-    public void SetRoom_Should_SetRoomProperty_When_ItIsInvoked()
-    {
-        // arrange
-        var sut = new Booking();
-        var room = new RoomBuilder().BuildDefault()
-                                    .Create();
-
-        // act
-        sut.SetRoom(room);
-
-        // assert
-        sut.Room.Should().NotBeNull();
-        sut.RoomId.Should().Be(room.Id);
-        sut.Room.Should().Be(room);
-    }
-
     [Theory]
     [MemberData(nameof(GetTestScenariosForHasDateChanged))]
     public void HasDateChanged_Should_ReturnTrue_When_PeriodChanges(DateTimeOffset checkInChanged, 

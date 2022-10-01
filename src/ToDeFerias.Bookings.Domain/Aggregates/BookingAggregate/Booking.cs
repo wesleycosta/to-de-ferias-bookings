@@ -48,18 +48,6 @@ public sealed class Booking : Entity, IAggregateRoot
         Period = new(checkIn, checkOut);
     }
 
-    public void SetHouseGuest(HouseGuest houseGuest)
-    {
-        HouseGuestId = houseGuest.Id;
-        HouseGuest = houseGuest;
-    }
-
-    public void SetRoom(Room room)
-    {
-        RoomId = room.Id;
-        Room = room;
-    }
-
     public bool HasDateChanged(DateRangeBooking period) =>
         !Period.Equals(period);
 

@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ToDeFerias.Bookings.Core.Bus;
 using ToDeFerias.Bookings.Core.Data;
 using ToDeFerias.Bookings.Core.Logger;
 using ToDeFerias.Bookings.Core.Mediator;
 using ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate;
 using ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate;
+using ToDeFerias.Bookings.Infrastructure.Bus;
 using ToDeFerias.Bookings.Infrastructure.Context;
 using ToDeFerias.Bookings.Infrastructure.Data.Repositories;
 using ToDeFerias.Bookings.Infrastructure.Logger;
@@ -21,7 +23,8 @@ public static class InfraConfigModule
        services.AddLogger(configuration)
                .AddContext(configuration)
                .AddMediator()
-               .AddRepositories();
+               .AddRepositories()
+               .AddMessageBus();
 
     private static IServiceCollection AddMediator(this IServiceCollection services)
     {
@@ -29,9 +32,8 @@ public static class InfraConfigModule
         return services.AddScoped<IMediatorHandler, MediatorHandler>();
     }
 
-    private static IServiceCollection AddContext(this IServiceCollection services, IConfiguration _) =>
-       //services.AddDbContext<BookingsContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-       services.AddDbContext<BookingsContext>(options => options.UseInMemoryDatabase("to-de-ferias-booking"));
+    private static IServiceCollection AddContext(this IServiceCollection services, IConfiguration configuration) =>
+       services.AddDbContext<BookingsContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
     private static IServiceCollection AddRepositories(this IServiceCollection services) =>
         services.AddScoped<IUnitOfWork, UnitOfWork>()
@@ -40,8 +42,6 @@ public static class InfraConfigModule
 
     public static IApplicationBuilder ApplyMigrate(this IApplicationBuilder app)
     {
-        return app;
-
         var logger = app.ApplicationServices.GetService<ILoggerService>();
 
         try
@@ -95,4 +95,7 @@ public static class InfraConfigModule
     private static IServiceCollection AddLogger(this IServiceCollection services, IConfiguration configuration) =>
         services.AddSingleton<ILoggerService, LoggerService>()
                 .AddSerilog(configuration);
+
+    private static IServiceCollection AddMessageBus(this IServiceCollection services) =>
+        services.AddScoped<IMessageBus, MessageBus>();
 }
