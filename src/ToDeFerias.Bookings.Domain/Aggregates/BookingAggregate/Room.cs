@@ -24,4 +24,7 @@ public sealed class Room : Entity
 
     public void SetId(Guid id) =>
         Id = id;
+
+    public void SetType(RoomType type) =>
+        Type = type;
 }

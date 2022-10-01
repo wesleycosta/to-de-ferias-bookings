@@ -7,9 +7,14 @@ internal sealed class RoomBuilder : BaseBuilderWithAutoFixture<Room, RoomBuilder
 {
     public override RoomBuilder BuildDefault()
     {
+        var roomType = new RoomTypeBuilder().BuildDefault()
+                                            .Create();
+
         Object = new Room(id: Guid.NewGuid(),
                           number: Fixture.Create<byte>(),
-                          roomTypeId: Guid.NewGuid());
+                          roomTypeId: roomType.Id);
+
+        Object.SetType(roomType);
 
         return this;
     }

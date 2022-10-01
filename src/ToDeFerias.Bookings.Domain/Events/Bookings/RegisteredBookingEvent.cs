@@ -23,6 +23,8 @@ public sealed class RegisteredBookingEvent : Event
                                   byte children)
     {
         HouseGuestName = houseGuest.Name;
+        HouseGuestEmail = houseGuest.Email;
+        
         RoomNumber = room.Number;
         RoomTypeName = room?.Type?.Name;
         DateRangeBooking = dateRangeBooking;

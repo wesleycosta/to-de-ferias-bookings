@@ -10,7 +10,7 @@ internal sealed class HouseGuestBuilder : BaseBuilderWithAutoFixture<HouseGuest,
     public override HouseGuestBuilder BuildDefault()
     {
         Object = new HouseGuest(id: Guid.NewGuid(),
-                                name: Fixture.Create<string>(),
+                                name: "Superman",
                                 _emailAddress,
                                 _cpf);
 

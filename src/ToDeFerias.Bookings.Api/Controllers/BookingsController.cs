@@ -30,7 +30,7 @@ public sealed class BookingsController : MainController
     }
 
     [HttpGet("{bookingId}")]
-    [ProducesResponseType(typeof(BookingDto), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(BookingFullDto), (int)HttpStatusCode.OK)]
     [ProducesResponseType(typeof(BadRequestResponseDto), (int)HttpStatusCode.NotFound)]
     public async Task<IActionResult> GetById(Guid bookingId)
     {
@@ -38,26 +38,26 @@ public sealed class BookingsController : MainController
         if (booking is null)
             return NotFound();
 
-        return Ok(_mapper.Map<BookingDto>(booking));
+        return Ok(_mapper.Map<BookingFullDto>(booking));
     }
 
     [HttpGet("start/{start}/end/{end}")]
-    [ProducesResponseType(typeof(BookingDto[]), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(BookingFullDto[]), (int)HttpStatusCode.OK)]
     public async Task<IActionResult> GetDateRange(DateTimeOffset start,
                                                   DateTimeOffset end)
     {
         var bookings = await _bookingRepository.GetDateRange(start, end);
-        return Ok(_mapper.Map<BookingDto[]>(bookings));
+        return Ok(_mapper.Map<BookingFullDto[]>(bookings));
     }
 
     [HttpGet("room/{roomId}/start/{start}/end/{end}")]
-    [ProducesResponseType(typeof(BookingDto[]), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(BookingFullDto[]), (int)HttpStatusCode.OK)]
     public async Task<IActionResult> GetByRoomId(Guid roomId,
                                                  DateTimeOffset start,
                                                  DateTimeOffset end)
     {
         var bookings = await _bookingRepository.GetByRoomId(roomId, start, end);
-        return Ok(_mapper.Map<BookingDto[]>(bookings));
+        return Ok(_mapper.Map<BookingFullDto[]>(bookings));
     }
 
     [HttpPost]

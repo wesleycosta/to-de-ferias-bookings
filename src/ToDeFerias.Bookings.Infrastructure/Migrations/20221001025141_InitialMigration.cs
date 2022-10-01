@@ -17,9 +17,7 @@ namespace ToDeFerias.Bookings.Infrastructure.Migrations
                     Name = table.Column<string>(type: "VARCHAR(255)", nullable: false),
                     Email = table.Column<string>(type: "VARCHAR(255)", nullable: true),
                     Cpf = table.Column<string>(type: "VARCHAR(255)", nullable: true),
-                    DateOfBirth = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    Created = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    LastUpdated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
+                    DateOfBirth = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -31,9 +29,7 @@ namespace ToDeFerias.Bookings.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "VARCHAR(255)", nullable: false),
-                    Created = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    LastUpdated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
+                    Name = table.Column<string>(type: "VARCHAR(255)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,9 +42,7 @@ namespace ToDeFerias.Bookings.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Number = table.Column<byte>(type: "tinyint", nullable: false),
-                    RoomTypeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Created = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    LastUpdated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
+                    RoomTypeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,9 +67,7 @@ namespace ToDeFerias.Bookings.Infrastructure.Migrations
                     Children = table.Column<byte>(type: "tinyint", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     HouseGuestId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RoomId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Created = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    LastUpdated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
+                    RoomId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
