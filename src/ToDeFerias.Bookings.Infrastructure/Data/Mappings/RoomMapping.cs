@@ -14,12 +14,12 @@ public sealed class RoomMapping : IEntityTypeConfiguration<Room>
                .HasColumnName("Id");
 
         builder.Property(p => p.Number)
-               .IsRequired()
-               .HasColumnName("Number");
+            .IsRequired()
+            .HasColumnName("Number");
 
         builder.HasOne(p => p.Type)
-               .WithMany(p => p.Rooms)
-               .HasForeignKey(p => p.RoomTypeId);
+            .WithMany(p => p.Rooms)
+            .HasForeignKey(p => p.RoomTypeId);
 
         builder.ToTable("Rooms");
     }

@@ -11,7 +11,6 @@ public sealed class EventWrapper
     {
         TraceId = traceId;
         Event = @event;
-
         Type = @event.GetType().Name;
     }
 }

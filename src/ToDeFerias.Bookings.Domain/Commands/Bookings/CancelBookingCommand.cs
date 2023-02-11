@@ -9,6 +9,7 @@ public sealed class CancelBookingCommand : Command
         AggregateId = aggregateId;
 
     public override bool IsValid() =>
-        new CancelBookingCommandValidation().Validate(this)
-                                            .IsValid;
+        new CancelBookingCommandValidation()
+            .Validate(this)
+            .IsValid;
 }

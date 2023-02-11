@@ -11,9 +11,10 @@ public sealed class BookingDateChangedEventHandler : EventBusBase, INotification
     private readonly BusSettings _messageBusSettings;
 
     public BookingDateChangedEventHandler(ITrace trace,
-                                          IMessageBus messageBus,
-                                          IOptions<BusSettings> messageBusSettings) : base(trace, messageBus) =>
-        _messageBusSettings = messageBusSettings.Value;
+        IMessageBus messageBus,
+        IOptions<BusSettings> messageBusSettings)
+        : base(trace, messageBus)
+        => _messageBusSettings = messageBusSettings.Value;
 
     public async Task Handle(BookingDateChangedEvent @event, CancellationToken cancellationToken)
     {

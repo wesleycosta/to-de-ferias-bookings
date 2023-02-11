@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using ToDeFerias.Bookings.Api.DTOs;
+using ToDeFerias.Bookings.Api.Dtos;
+using ToDeFerias.Bookings.Api.Dtos.Booking;
 using ToDeFerias.Bookings.Core.Messages;
 using ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate;
 using ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate;

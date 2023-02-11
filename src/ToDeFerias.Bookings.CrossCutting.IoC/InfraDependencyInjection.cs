@@ -17,14 +17,14 @@ using ToDeFerias.Bookings.Infrastructure.Mediator;
 
 namespace ToDeFerias.Bookings.CrossCutting.IoC;
 
-public static class InfraIoC
+public static class InfraDependencyInjection
 {
     public static IServiceCollection AddInfraConfiguration(this IServiceCollection services, IConfiguration configuration) =>
        services.AddLogger(configuration)
-               .AddContext(configuration)
-               .AddMediator()
-               .AddRepositories()
-               .AddMessageBus();
+            .AddContext(configuration)
+            .AddMediator()
+            .AddRepositories()
+            .AddMessageBus();
 
     private static IServiceCollection AddMediator(this IServiceCollection services)
     {
@@ -37,8 +37,8 @@ public static class InfraIoC
 
     private static IServiceCollection AddRepositories(this IServiceCollection services) =>
         services.AddScoped<IUnitOfWork, UnitOfWork>()
-                .AddScoped<IBookingRepository, BookingRepository>()
-                .AddScoped<IHouseGuestRepository, HouseGuestRepository>();
+            .AddScoped<IBookingRepository, BookingRepository>()
+            .AddScoped<IHouseGuestRepository, HouseGuestRepository>();
 
     public static IApplicationBuilder ApplyMigrate(this IApplicationBuilder app)
     {
@@ -97,7 +97,7 @@ public static class InfraIoC
 
     private static IServiceCollection AddLogger(this IServiceCollection services, IConfiguration configuration) =>
         services.AddSingleton<ILoggerService, LoggerService>()
-                .AddSerilog(configuration);
+            .AddSerilog(configuration);
 
     private static IServiceCollection AddMessageBus(this IServiceCollection services) =>
         services.AddScoped<IMessageBus, MessageBus>();

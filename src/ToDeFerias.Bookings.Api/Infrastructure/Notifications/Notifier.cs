@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace ToDeFerias.Bookings.Api.Infrastructure.Notifications;
+﻿namespace ToDeFerias.Bookings.Api.Infrastructure.Notifications;
 
 internal class Notifier : INotifier
 {

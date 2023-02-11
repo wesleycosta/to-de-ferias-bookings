@@ -19,12 +19,12 @@ public sealed class Booking : Entity, IAggregateRoot
     public Booking() { }
 
     public Booking(Guid houseGuestId,
-                   Guid roomId,
-                   DateTimeOffset checkIn,
-                   DateTimeOffset checkOut,
-                   decimal value,
-                   byte adults,
-                   byte children)
+        Guid roomId,
+        DateTimeOffset checkIn,
+        DateTimeOffset checkOut,
+        decimal value,
+        byte adults,
+        byte children)
     {
         Id = Guid.NewGuid();
         HouseGuestId = houseGuestId;
@@ -37,10 +37,10 @@ public sealed class Booking : Entity, IAggregateRoot
     }
 
     public void Update(decimal value,
-                       byte adults,
-                       byte children,
-                       DateTimeOffset checkIn,
-                       DateTimeOffset checkOut)
+        byte adults,
+        byte children,
+        DateTimeOffset checkIn,
+        DateTimeOffset checkOut)
     {
         Value = value;
         Adults = adults;

@@ -23,7 +23,7 @@ public sealed class MessageBus : IMessageBus
     private readonly int _retryCount = 3;
 
     public MessageBus(IOptions<BusSettings> busSettings,
-                      ILoggerService loggerService)
+            ILoggerService loggerService)
     {
         _busSettings = busSettings.Value;
         _loggerService = loggerService;

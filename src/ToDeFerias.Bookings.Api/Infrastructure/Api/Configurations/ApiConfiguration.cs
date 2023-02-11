@@ -13,35 +13,32 @@ internal static class ApiConfiguration
 {
     public static IServiceCollection AddApiConfiguration(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddControllers(options => options.Conventions.Add(new RouteTokenTransformerConvention(new SlugifyParameterTransformer())));
+        var tokenConvention = new RouteTokenTransformerConvention(new SlugifyParameterTransformer());
+        services.AddControllers(options => options.Conventions.Add(tokenConvention));
 
         return services.AddEndpointsApiExplorer()
-                       .AddSwagger()
-                       .AddNotifications()
-                       .AddTraceLogger()
-                       .AddAppConfiguration()
-                       .AddSettings(configuration)
-                       .AddInfraConfiguration(configuration)
-                       .AddDomainConfiguration()
-                       .AddHttpContextAccessor();
+            .AddSwagger()
+            .AddNotifications()
+            .AddTraceLogger()
+            .AddAppConfiguration()
+            .AddSettings(configuration)
+            .AddInfraConfiguration(configuration)
+            .AddDomainConfiguration()
+            .AddHttpContextAccessor();
     }
 
     private static IServiceCollection AddNotifications(this IServiceCollection services) =>
-         services.AddScoped<INotifier, Notifier>();
+        services.AddScoped<INotifier, Notifier>();
 
     private static IServiceCollection AddTraceLogger(this IServiceCollection services) =>
         services.AddSingleton<ITrace, Trace>();
 
     public static IServiceCollection AddAppConfiguration(this IServiceCollection services) =>
-      services.AddAutoMapper(config =>
-      {
-          config.AddProfile<DomainToDtoMappingProfile>();
-          config.AddProfile<DtoToDomainMappingProfile>();
-      });
+        services.AddAutoMapper(config => config.AddProfile<DomainToDtoMappingProfile>());
 
     public static void UseApiConfiguration(this IApplicationBuilder app) =>
-            app.UseSwaggerConfiguration()
-               .UseHttpsRedirection()
-               .UseMiddlewares()
-               .UseAuthorization();
+        app.UseSwaggerConfiguration()
+           .UseHttpsRedirection()
+           .UseMiddlewares()
+           .UseAuthorization();
 }

@@ -7,7 +7,7 @@ public sealed class CancelBookingCommandValidation : AbstractValidator<CancelBoo
 {
     public CancelBookingCommandValidation() =>
         RuleFor(command => command.AggregateId)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage(ValidationMessages.TheFieldCannotBeEmpty("BookingId"));
+            .NotEmpty()
+            .NotNull()
+            .WithMessage(ValidationMessages.TheFieldCannotBeEmpty("BookingId"));
 }

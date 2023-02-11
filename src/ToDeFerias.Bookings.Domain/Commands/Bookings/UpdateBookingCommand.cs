@@ -15,6 +15,7 @@ public sealed class UpdateBookingCommand : Command
     }
 
     public override bool IsValid() =>
-        new UpdateBookingValidation().Validate(this)
-                                     .IsValid;
+        new UpdateBookingValidation()
+            .Validate(this)
+            .IsValid;
 }

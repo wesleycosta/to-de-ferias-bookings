@@ -7,5 +7,5 @@ internal static class SettingsConfigurations
 {
     public static IServiceCollection AddSettings(this IServiceCollection services, IConfiguration configuration) =>
         services.Configure<ApiKeySetting>(configuration.GetSection("ApiKey"))
-                .Configure<BusSettings>(configuration.GetSection("BusSettings"));
+            .Configure<BusSettings>(configuration.GetSection("BusSettings"));
 }

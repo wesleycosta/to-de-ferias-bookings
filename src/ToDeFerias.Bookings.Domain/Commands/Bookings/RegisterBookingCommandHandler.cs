@@ -15,7 +15,7 @@ public sealed class RegisterBookingCommandHandler : CommandHandler, IRequestHand
     private readonly IHouseGuestRepository _houseGuestRepository;
 
     public RegisterBookingCommandHandler(IBookingRepository bookingRepository,
-                                         IHouseGuestRepository houseGuestRepository)
+        IHouseGuestRepository houseGuestRepository)
     {
         _bookingRepository = bookingRepository;
         _houseGuestRepository = houseGuestRepository;
@@ -73,12 +73,12 @@ public sealed class RegisterBookingCommandHandler : CommandHandler, IRequestHand
     private Booking AddBooking(RegisterBookingInputModel inputModel)
     {
         var booking = new Booking(inputModel.HouseGuestId,
-                                  inputModel.RoomId,
-                                  inputModel.CheckIn,
-                                  inputModel.CheckOut,
-                                  inputModel.Value,
-                                  (byte)inputModel.Adults,
-                                  (byte)inputModel.Children);
+            inputModel.RoomId,
+            inputModel.CheckIn,
+            inputModel.CheckOut,
+            inputModel.Value,
+            (byte)inputModel.Adults,
+            (byte)inputModel.Children);
 
         _bookingRepository.Add(booking);
         return booking;

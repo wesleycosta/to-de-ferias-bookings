@@ -6,18 +6,18 @@ using ToDeFerias.Bookings.Domain.Events.Bookings;
 
 namespace ToDeFerias.Bookings.Domain;
 
-public static class DomainIoC
+public static class DomainDependencyInjection
 {
     public static IServiceCollection AddDomainConfiguration(this IServiceCollection services) =>
         services.AddCommands()
-                .AddEvents();
+            .AddEvents();
 
     private static IServiceCollection AddCommands(this IServiceCollection services) =>
         services.AddScoped<IRequestHandler<CancelBookingCommand, CommandHandlerResult>, CancelBookingCommandHandler>()
-                .AddScoped<IRequestHandler<CheckInCommand, CommandHandlerResult>, CheckInCommandHandler>()
-                .AddScoped<IRequestHandler<CheckOutCommand, CommandHandlerResult>, CheckOutCommandHandler>()
-                .AddScoped<IRequestHandler<RegisterBookingCommand, CommandHandlerResult>, RegisterBookingCommandHandler>()
-                .AddScoped<IRequestHandler<UpdateBookingCommand, CommandHandlerResult>, UpdateBookingCommandHandler>();
+            .AddScoped<IRequestHandler<CheckInCommand, CommandHandlerResult>, CheckInCommandHandler>()
+            .AddScoped<IRequestHandler<CheckOutCommand, CommandHandlerResult>, CheckOutCommandHandler>()
+            .AddScoped<IRequestHandler<RegisterBookingCommand, CommandHandlerResult>, RegisterBookingCommandHandler>()
+            .AddScoped<IRequestHandler<UpdateBookingCommand, CommandHandlerResult>, UpdateBookingCommandHandler>();
 
     private static IServiceCollection AddEvents(this IServiceCollection services) =>
        services.AddScoped<INotificationHandler<RegisteredBookingEvent>, RegisteredBookingHandler>();

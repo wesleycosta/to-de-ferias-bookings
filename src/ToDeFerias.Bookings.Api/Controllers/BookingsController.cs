@@ -1,7 +1,8 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
-using ToDeFerias.Bookings.Api.DTOs;
+using ToDeFerias.Bookings.Api.Dtos;
+using ToDeFerias.Bookings.Api.Dtos.Booking;
 using ToDeFerias.Bookings.Api.Infrastructure.Api.Controllers;
 using ToDeFerias.Bookings.Api.Infrastructure.Notifications;
 using ToDeFerias.Bookings.Core.Mediator;
@@ -20,9 +21,9 @@ public sealed class BookingsController : MainController
     private readonly IBookingRepository _bookingRepository;
 
     public BookingsController(IMapper mapper,
-                              INotifier notifier,
-                              IMediatorHandler mediatorHandler,
-                              IBookingRepository bookingRepository) : base(mapper, notifier)
+        INotifier notifier,
+        IMediatorHandler mediatorHandler,
+        IBookingRepository bookingRepository) : base(mapper, notifier)
     {
         _mapper = mapper;
         _mediator = mediatorHandler;

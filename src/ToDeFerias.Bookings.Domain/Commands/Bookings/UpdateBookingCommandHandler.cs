@@ -41,20 +41,23 @@ public sealed class UpdateBookingCommandHandler : CommandHandler, IRequestHandle
             return false;
         }
 
-        booking.AddEvent(new BookingDateChangedEvent(booking.HouseGuest,
-                                                     booking.Room,
-                                                     booking.Period,
-                                                     dateRange));
+        var @event = new BookingDateChangedEvent(booking.HouseGuest,
+            booking.Room,
+            booking.Period,
+            dateRange);
+
+        booking.AddEvent(@event);
+
         return true;
     }
 
     private async Task<CommandHandlerResult> UpdateBooking(Booking booking, UpdateBookingInputModel inputModel)
     {
         booking.Update(inputModel.Value,
-                      (byte)inputModel.Adults,
-                      (byte)inputModel.Children,
-                      inputModel.CheckIn, 
-                      inputModel.CheckOut);
+            (byte)inputModel.Adults,
+            (byte)inputModel.Children,
+            inputModel.CheckIn,
+            inputModel.CheckOut);
 
         _bookingRepository.Update(booking);
 

@@ -11,25 +11,25 @@ public sealed class HouseGuestMapping : IEntityTypeConfiguration<HouseGuest>
         builder.HasKey(p => p.Id);
 
         builder.Property(p => p.Id)
-               .HasColumnName("Id");
+            .HasColumnName("Id");
 
         builder.Property(p => p.Name)
-               .IsRequired()
-               .HasColumnName("Name");
+            .IsRequired()
+            .HasColumnName("Name");
 
         builder.OwnsOne(p => p.Email,
-                        p => p.Property(c => c.Address)
-                              .IsRequired()
-                              .HasColumnName("Email"));
+            p => p.Property(c => c.Address)
+                  .IsRequired()
+                  .HasColumnName("Email"));
 
         builder.OwnsOne(p => p.Cpf,
-                        p => p.Property(c => c.Number)
-                              .IsRequired()
-                              .HasColumnName("Cpf"));
+            p => p.Property(c => c.Number)
+                  .IsRequired()
+                  .HasColumnName("Cpf"));
 
         builder.OwnsOne(p => p.DateOfBirth,
-                        p => p.Property(c => c.Birthday)
-                              .HasColumnName("DateOfBirth"));
+            p => p.Property(c => c.Birthday)
+                  .HasColumnName("DateOfBirth"));
 
         builder.ToTable("HouseGuests");
     }

@@ -2,7 +2,7 @@
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
-using ToDeFerias.Bookings.Api.DTOs;
+using ToDeFerias.Bookings.Api.Dtos;
 using ToDeFerias.Bookings.Api.Infrastructure.Api.Attributes;
 using ToDeFerias.Bookings.Api.Infrastructure.Notifications;
 

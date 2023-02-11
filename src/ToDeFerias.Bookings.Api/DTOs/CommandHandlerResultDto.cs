@@ -1,6 +1,6 @@
 ﻿using FluentValidation.Results;
 
-namespace ToDeFerias.Bookings.Api.DTOs;
+namespace ToDeFerias.Bookings.Api.Dtos;
 
 public sealed class CommandHandlerResultDto
 {

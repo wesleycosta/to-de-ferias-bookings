@@ -9,6 +9,7 @@ public sealed class CheckOutCommand : Command
         AggregateId = aggregateId;
 
     public override bool IsValid() =>
-        new CheckOutCommandValidation().Validate(this)
-                                       .IsValid;
+        new CheckOutCommandValidation()
+            .Validate(this)
+            .IsValid;
 }

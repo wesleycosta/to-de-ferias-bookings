@@ -11,9 +11,10 @@ public sealed class RegisteredBookingHandler : EventBusBase, INotificationHandle
     private readonly BusSettings _messageBusSettings;
 
     public RegisteredBookingHandler(ITrace trace,
-                                    IMessageBus messageBus,
-                                    IOptions<BusSettings> messageBusSettings) : base(trace, messageBus) =>
-        _messageBusSettings = messageBusSettings.Value;
+        IMessageBus messageBus,
+        IOptions<BusSettings> messageBusSettings)
+        : base(trace, messageBus)
+        => _messageBusSettings = messageBusSettings.Value;
 
     public async Task Handle(RegisteredBookingEvent @event, CancellationToken cancellationToken)
     {

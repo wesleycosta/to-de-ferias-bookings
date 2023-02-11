@@ -15,7 +15,9 @@ public sealed class Room : Entity
     public Room(Guid id) =>
         Id = id;
 
-    public Room(Guid id, byte number, Guid roomTypeId)
+    public Room(Guid id, 
+        byte number, 
+        Guid roomTypeId)
     {
         Id = id;
         Number = number;

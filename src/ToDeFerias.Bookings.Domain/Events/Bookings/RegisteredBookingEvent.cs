@@ -17,12 +17,12 @@ public sealed class RegisteredBookingEvent : Event
     public byte Children { get; private set; }
 
     public RegisteredBookingEvent(Guid aggregateId,
-                                  HouseGuest houseGuest,
-                                  Room room,
-                                  DateRangeBooking dateRangeBooking,
-                                  decimal value,
-                                  byte adults,
-                                  byte children)
+        HouseGuest houseGuest,
+        Room room,
+        DateRangeBooking dateRangeBooking,
+        decimal value,
+        byte adults,
+        byte children)
     {
         AggregateId = aggregateId;
         HouseGuestName = houseGuest.Name;

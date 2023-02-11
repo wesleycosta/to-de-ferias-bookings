@@ -69,9 +69,9 @@ internal sealed class RequestLogMiddleware
         context.Response.Body = stream;
 
         _logger.Information(operation,
-                            "Response",
-                            body,
-                            context.Response.StatusCode,
-                            traceId);
+            "Response",
+            body,
+            context.Response.StatusCode,
+            traceId);
     }
 }

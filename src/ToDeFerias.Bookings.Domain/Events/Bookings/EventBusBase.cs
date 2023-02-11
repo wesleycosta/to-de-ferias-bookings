@@ -11,7 +11,7 @@ public abstract class EventBusBase
     private readonly IMessageBus _messageBus;
 
     public EventBusBase(ITrace trace,
-                       IMessageBus messageBus)
+        IMessageBus messageBus)
     {
         _trace = trace;
         _messageBus = messageBus;

@@ -1,4 +1,4 @@
-﻿namespace ToDeFerias.Bookings.Api.DTOs;
+﻿namespace ToDeFerias.Bookings.Api.Dtos.Booking;
 
 public sealed class RoomDto
 {

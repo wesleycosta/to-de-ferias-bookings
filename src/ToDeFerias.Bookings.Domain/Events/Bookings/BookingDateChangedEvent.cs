@@ -14,9 +14,9 @@ public sealed class BookingDateChangedEvent : Event
     public DateRangeBooking NewDate { get; private set; }
 
     public BookingDateChangedEvent(HouseGuest houseGuest,
-                                   Room room,
-                                   DateRangeBooking oldDate,
-                                   DateRangeBooking newDate)
+        Room room,
+        DateRangeBooking oldDate,
+        DateRangeBooking newDate)
     {
         HouseGuestName = houseGuest.Name;
         RoomNumber = room.Number;

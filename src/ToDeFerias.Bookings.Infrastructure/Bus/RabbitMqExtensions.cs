@@ -19,16 +19,16 @@ internal static class RabbitMqExtensions
         };
 
         channel.QueueDeclare(queueSettings.Queue,
-                             durable: true,
-                             exclusive: false,
-                             autoDelete: false,
-                             arguments);
+            durable: true,
+            exclusive: false,
+             autoDelete: false,
+             arguments);
     }
 
     public static void QueueBind(this IModel channel, QueueSettings queueSettings) =>
         channel.QueueBind(queueSettings.Queue,
-                          queueSettings.Exchange,
-                          queueSettings.RoutingKey);
+            queueSettings.Exchange,
+            queueSettings.RoutingKey);
 
     public static void PublishJson(this IModel channel, string json, QueueSettings queueSettings)
     {
