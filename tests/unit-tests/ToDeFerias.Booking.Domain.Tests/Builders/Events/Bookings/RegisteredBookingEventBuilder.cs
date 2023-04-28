@@ -1,5 +1,5 @@
-﻿using ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate;
-using ToDeFerias.Bookings.Domain.Events.Bookings;
+﻿using ToDeFerias.Bookings.Domain.Bookings.Aggregates;
+using ToDeFerias.Bookings.Domain.Bookings.Events;
 using ToDeFerias.Bookings.Domain.Tests.Builders.Aggregates.BookingAggregate;
 using ToDeFerias.Bookings.Domain.Tests.Builders.Aggregates.HouseGuestAggregate;
 
@@ -20,12 +20,12 @@ internal sealed class RegisteredBookingEventBuilder : BaseBuilderWithAutoFixture
         var dateRangeBooking = new DateRangeBooking(checkIn, checkOut);
 
         Object = new RegisteredBookingEvent(Guid.NewGuid(),
-                                            houseGuest,
-                                            room,
-                                            dateRangeBooking,
-                                            Fixture.Create<decimal>(),
-                                            Fixture.Create<byte>(),
-                                            Fixture.Create<byte>());
+            houseGuest,
+            room,
+            dateRangeBooking,
+            Fixture.Create<decimal>(),
+            Fixture.Create<byte>(),
+            Fixture.Create<byte>());
 
         return this;
     }

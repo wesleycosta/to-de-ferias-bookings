@@ -1,5 +1,5 @@
 ﻿using AutoFixture;
-using ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate;
+using ToDeFerias.Bookings.Domain.Bookings.Aggregates;
 
 namespace ToDeFerias.Bookings.Domain.Tests.Builders.Aggregates.BookingAggregate;
 

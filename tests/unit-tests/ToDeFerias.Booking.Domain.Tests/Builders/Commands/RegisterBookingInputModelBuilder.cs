@@ -1,4 +1,4 @@
-﻿using ToDeFerias.Bookings.Domain.Inputs.Bookings;
+﻿using ToDeFerias.Bookings.Domain.Bookings.Inputs;
 
 namespace ToDeFerias.Bookings.Domain.Tests.Builders.Commands;
 

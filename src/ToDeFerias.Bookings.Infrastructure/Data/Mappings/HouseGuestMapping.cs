@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate;
+using ToDeFerias.Bookings.Domain.HouseGuests.Aggregates;
 
 namespace ToDeFerias.Bookings.Infrastructure.Data.Mappings;
 

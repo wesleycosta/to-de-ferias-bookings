@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ToDeFerias.Bookings.Core.Data;
-using ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate;
+using ToDeFerias.Bookings.Domain.Bookings.Aggregates;
 using ToDeFerias.Bookings.Infrastructure.Context;
 using ToDeFerias.Bookings.Infrastructure.Repositories;
 

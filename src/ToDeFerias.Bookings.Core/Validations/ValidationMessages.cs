@@ -3,7 +3,10 @@
 public sealed class ValidationMessages
 {
     public static string NotInformed(string field) =>
-        $"Field {field} is not found";
+        $"Field {field} is not informed";
+
+    public static string IsInvalid(string field) =>
+       $"Field {field} is invalid";
 
     public static string IdentifierIsInvalid() =>
         "Field id is invalid";

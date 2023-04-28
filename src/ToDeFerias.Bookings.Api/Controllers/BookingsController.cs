@@ -2,18 +2,17 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using ToDeFerias.Bookings.Api.Dtos;
-using ToDeFerias.Bookings.Api.Dtos.Booking;
 using ToDeFerias.Bookings.Api.Infrastructure.Api.Controllers;
 using ToDeFerias.Bookings.Api.Infrastructure.Notifications;
 using ToDeFerias.Bookings.Core.Mediator;
-using ToDeFerias.Bookings.Domain.Aggregates.BookingAggregate;
-using ToDeFerias.Bookings.Domain.Commands.Bookings;
-using ToDeFerias.Bookings.Domain.Inputs.Bookings;
+using ToDeFerias.Bookings.Domain.Bookings.Aggregates;
+using ToDeFerias.Bookings.Domain.Bookings.Commands;
+using ToDeFerias.Bookings.Domain.Bookings.Inputs;
 
 namespace ToDeFerias.Bookings.Api.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/bookings")]
 public sealed class BookingsController : MainController
 {
     private readonly IMapper _mapper;
@@ -45,7 +44,7 @@ public sealed class BookingsController : MainController
     [HttpGet("start/{start}/end/{end}")]
     [ProducesResponseType(typeof(BookingFullDto[]), (int)HttpStatusCode.OK)]
     public async Task<IActionResult> GetDateRange(DateTimeOffset start,
-                                                  DateTimeOffset end)
+        DateTimeOffset end)
     {
         var bookings = await _bookingRepository.GetDateRange(start, end);
         return Ok(_mapper.Map<BookingFullDto[]>(bookings));
@@ -54,65 +53,65 @@ public sealed class BookingsController : MainController
     [HttpGet("room/{roomId}/start/{start}/end/{end}")]
     [ProducesResponseType(typeof(BookingFullDto[]), (int)HttpStatusCode.OK)]
     public async Task<IActionResult> GetByRoomId(Guid roomId,
-                                                 DateTimeOffset start,
-                                                 DateTimeOffset end)
+        DateTimeOffset start,
+        DateTimeOffset end)
     {
         var bookings = await _bookingRepository.GetByRoomId(roomId, start, end);
         return Ok(_mapper.Map<BookingFullDto[]>(bookings));
     }
 
     [HttpPost]
-    [ProducesResponseType(typeof(BookingDto), (int)HttpStatusCode.Created)]
+    [ProducesResponseType(typeof(BookingBasicInfoDto), (int)HttpStatusCode.Created)]
     [ProducesResponseType(typeof(BadRequestResponseDto), (int)HttpStatusCode.BadRequest)]
     public async Task<IActionResult> Create([FromBody] RegisterBookingInputModel inputModel)
     {
         var command = new RegisterBookingCommand(inputModel);
         var result = await _mediator.SendCommand(command);
 
-        return Created<BookingDto>(_mapper.Map<CommandHandlerResultDto>(result), "~api/bookings/1");
+        return Created<BookingBasicInfoDto>(_mapper.Map<CommandHandlerResultDto>(result), "~api/bookings/1");
     }
 
     [HttpPatch("{bookingId}")]
-    [ProducesResponseType(typeof(BookingDto), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(BookingBasicInfoDto), (int)HttpStatusCode.OK)]
     [ProducesResponseType(typeof(BadRequestResponseDto), (int)HttpStatusCode.BadRequest)]
     public async Task<IActionResult> Update(Guid bookingId, [FromBody] UpdateBookingInputModel inputModel)
     {
         var command = new UpdateBookingCommand(bookingId, inputModel);
         var result = await _mediator.SendCommand(command);
 
-        return Ok<BookingDto>(_mapper.Map<CommandHandlerResultDto>(result));
+        return Ok<BookingBasicInfoDto>(_mapper.Map<CommandHandlerResultDto>(result));
     }
 
     [HttpPatch("{bookingId}/check-in")]
-    [ProducesResponseType(typeof(BookingDto), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(BookingBasicInfoDto), (int)HttpStatusCode.OK)]
     [ProducesResponseType(typeof(BadRequestResponseDto), (int)HttpStatusCode.BadRequest)]
     public async Task<IActionResult> CheckIn(Guid bookingId)
     {
         var command = new CheckInCommand(bookingId);
         var result = await _mediator.SendCommand(command);
 
-        return Ok<BookingDto>(_mapper.Map<CommandHandlerResultDto>(result));
+        return Ok<BookingBasicInfoDto>(_mapper.Map<CommandHandlerResultDto>(result));
     }
 
     [HttpPatch("{bookingId}/check-out")]
-    [ProducesResponseType(typeof(BookingDto), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(BookingBasicInfoDto), (int)HttpStatusCode.OK)]
     [ProducesResponseType(typeof(BadRequestResponseDto), (int)HttpStatusCode.BadRequest)]
     public async Task<IActionResult> CheckOut(Guid bookingId)
     {
         var command = new CheckOutCommand(bookingId);
         var result = await _mediator.SendCommand(command);
 
-        return Ok<BookingDto>(_mapper.Map<CommandHandlerResultDto>(result));
+        return Ok<BookingBasicInfoDto>(_mapper.Map<CommandHandlerResultDto>(result));
     }
 
     [HttpPatch("{bookingId}/cancel")]
-    [ProducesResponseType(typeof(BookingDto), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(BookingBasicInfoDto), (int)HttpStatusCode.OK)]
     [ProducesResponseType(typeof(BadRequestResponseDto), (int)HttpStatusCode.BadRequest)]
     public async Task<IActionResult> Cancel(Guid bookingId)
     {
         var command = new CancelBookingCommand(bookingId);
         var result = await _mediator.SendCommand(command);
 
-        return Ok<BookingDto>(_mapper.Map<CommandHandlerResultDto>(result));
+        return Ok<BookingBasicInfoDto>(_mapper.Map<CommandHandlerResultDto>(result));
     }
 }

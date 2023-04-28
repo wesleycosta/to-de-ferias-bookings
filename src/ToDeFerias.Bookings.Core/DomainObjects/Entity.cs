@@ -5,8 +5,8 @@ namespace ToDeFerias.Bookings.Core.DomainObjects;
 public abstract class Entity
 {
     public Guid Id { get; set; }
-    public IReadOnlyCollection<Event> DomainEvents =>
-        _eventNotification.AsReadOnly();
+    public IReadOnlyCollection<Event> DomainEvents
+        => _eventNotification.AsReadOnly();
 
     private List<Event> _eventNotification = new();
 
@@ -18,9 +18,6 @@ public abstract class Entity
         _eventNotification ??= new List<Event>();
         _eventNotification.Add(eventMessage);
     }
-
-    public void RemoveEvent(Event eventItem) =>
-        _eventNotification?.Remove(eventItem);
 
     public void ClearEvents() =>
         _eventNotification?.Clear();

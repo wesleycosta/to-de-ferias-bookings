@@ -1,4 +1,4 @@
-﻿using ToDeFerias.Bookings.Domain.Aggregates.HouseGuestAggregate;
+﻿using ToDeFerias.Bookings.Domain.HouseGuests.Aggregates;
 
 namespace ToDeFerias.Bookings.Domain.Tests.Builders.Aggregates.HouseGuestAggregate;
 
@@ -9,20 +9,22 @@ internal sealed class HouseGuestBuilder : BaseBuilderWithAutoFixture<HouseGuest,
 
     public override HouseGuestBuilder BuildDefault()
     {
-        Object = new HouseGuest(id: Guid.NewGuid(),
-                                name: "Superman",
-                                _emailAddress,
-                                _cpf);
+        Object = new HouseGuest("Superman",
+            _emailAddress,
+            _cpf,
+            DateTimeOffset.Now.AddYears(-30));
 
         return this;
     }
 
     public HouseGuestBuilder WithId(Guid id)
     {
-        Object = new HouseGuest(id: id,
-                               name: Fixture.Create<string>(),
-                               _emailAddress,
-                               _cpf);
+        Object = new HouseGuest(Fixture.Create<string>(),
+            _emailAddress,
+            _cpf,
+            DateTimeOffset.Now.AddYears(-30));
+
+        Object.SetId(id);
 
         return this;
     }

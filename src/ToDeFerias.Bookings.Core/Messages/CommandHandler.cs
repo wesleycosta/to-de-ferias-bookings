@@ -17,7 +17,7 @@ public abstract class CommandHandler
     {
         if (!await unitOfWork.Commit())
         {
-            Notify("Houve um erro ao persistir os dados");
+            Notify("There was an error while persisting the data");
             responseCommand = null;
         }
 
