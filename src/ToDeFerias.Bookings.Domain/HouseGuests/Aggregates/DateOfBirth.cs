@@ -28,7 +28,7 @@ public sealed class DateOfBirth : IValueObject
     }
 
     public override int GetHashCode() =>
-        GetType().GetHashCode() * 907 + Birthday.GetHashCode();
+        (GetType().GetHashCode() * 907) + Birthday.GetHashCode();
 
     public override string ToString() =>
         Birthday.ToString();

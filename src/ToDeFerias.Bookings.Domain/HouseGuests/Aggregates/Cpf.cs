@@ -34,7 +34,7 @@ public sealed class Cpf : IValueObject
     }
 
     public override int GetHashCode() =>
-      GetType().GetHashCode() * 907 + Number.GetHashCode();
+      (GetType().GetHashCode() * 907) + Number.GetHashCode();
 
     public override string ToString()
     {

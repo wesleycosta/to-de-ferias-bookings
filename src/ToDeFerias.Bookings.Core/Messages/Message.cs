@@ -7,5 +7,4 @@ public abstract class Message
 
     protected Message() =>
         MessageType = GetType().Name;
-
 }

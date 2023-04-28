@@ -38,7 +38,7 @@ public sealed class Email : IValueObject
     }
 
     public override int GetHashCode() =>
-        GetType().GetHashCode() * 907 + Address.GetHashCode();
+        (GetType().GetHashCode() * 907) + Address.GetHashCode();
 
     public override string ToString() =>
         Address;
