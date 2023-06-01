@@ -61,7 +61,7 @@ public abstract class CommandHandler
         };
     }
 
-    public CommandHandlerResult SuccessfulCommand(object responseCommand) =>
+    public CommandHandlerResult SuccessfulCommand(object responseCommand = null) =>
         new()
         {
             ValidationResult = ValidationResult,

@@ -53,6 +53,17 @@ public class HouseGuestsController : MainController
         return Ok<HouseGuestFullDto>(_mapper.Map<CommandHandlerResultDto>(result));
     }
 
+    [HttpDelete("{houseGuestId}")]
+    [ProducesResponseType((int)HttpStatusCode.NoContent)]
+    [ProducesResponseType(typeof(BadRequestResponseDto), (int)HttpStatusCode.BadRequest)]
+    public async Task<IActionResult> Delete(Guid houseGuestId)
+    {
+        var command = new DeleteHouseGuestCommand(houseGuestId);
+        var result = await _mediator.SendCommand(command);
+
+        return Ok<HouseGuestFullDto>(_mapper.Map<CommandHandlerResultDto>(result));
+    }
+
     [HttpGet("{houseGuestId}")]
     [ProducesResponseType(typeof(HouseGuestFullDto), (int)HttpStatusCode.OK)]
     [ProducesResponseType(typeof(BadRequestResponseDto), (int)HttpStatusCode.NotFound)]
