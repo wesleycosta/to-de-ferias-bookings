@@ -21,4 +21,3 @@ public class DeleteHouseGuestCommandHandler : CommandHandler, IRequestHandler<De
         return SuccessfulCommand();
     }
 }
-
