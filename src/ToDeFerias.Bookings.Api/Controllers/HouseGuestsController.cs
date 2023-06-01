@@ -5,8 +5,6 @@ using ToDeFerias.Bookings.Api.Dtos;
 using ToDeFerias.Bookings.Api.Infrastructure.Api.Controllers;
 using ToDeFerias.Bookings.Api.Infrastructure.Notifications;
 using ToDeFerias.Bookings.Core.Mediator;
-using ToDeFerias.Bookings.Domain.Bookings.Commands;
-using ToDeFerias.Bookings.Domain.Bookings.Inputs;
 using ToDeFerias.Bookings.Domain.HouseGuests.Aggregates;
 using ToDeFerias.Bookings.Domain.HouseGuests.Commands;
 using ToDeFerias.Bookings.Domain.HouseGuests.Inputs;
